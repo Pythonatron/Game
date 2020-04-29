@@ -1,10 +1,5 @@
 import random
 
-#weapons = {"nameofweapon":price} #This is a Dictionary.
-#Tierd system?
-#Finished!
-
-#damage dealt by each weapon
 cweapatk = {
         "small dagger": random.randint(0,3),
         'old staff': random.randint(0,3),
@@ -36,7 +31,6 @@ cweapatk = {
         "morning star":random.randint(1, 8),
 }
 
-#price of each weapon
 weapr = {
         "slice of pizza": 2.95,
         "zeus lightning": random.randint(5000, 10000),
