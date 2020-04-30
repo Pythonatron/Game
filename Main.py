@@ -104,6 +104,9 @@ def setup2():
     elif choice == "rogue":
         PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['rusty dagger'],['rusty dagger'],"A cloud of smoke and he appears. The master of suprise!",40,0) 
         start1()
+    elif choice == "god":
+        PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['admin'],['admin'],"",1000,0) 
+        start1()
     else:
         os.system('cls||clear')
         print("Incorrect class, try again")
@@ -237,7 +240,7 @@ def fight():
 
 def attack():
     os.system('cls||clear')
-    PAttack = PlayerIG.attack #implement armor system. #shit, i removed the miss system...
+    PAttack = PlayerIG.attack #implement armor system. # shit, i removed the miss system...
     EAttack = enemy.attack   #why isn't death listed?
     
     if PAttack == PlayerIG.attack / 2:
@@ -249,7 +252,6 @@ def attack():
         input("Press enter to continue") 
     if enemy.health <= 0:
         win()
-        os.system('cls||clear')
     if EAttack == enemy.attack / 2:
         print("Phew! That was a close one.")
     else:
@@ -261,18 +263,18 @@ def attack():
     else:
         fight()
     
-def drinkpot(): #bug that causes infinite potions
+def drinkpot(): 
     os.system('cls||clear')
     if PlayerIG.pots == 0:
         print("You currently have no potions.")
     else:
         PlayerIG.health += 50
-        PlayerIG.pots - 1
+        PlayerIG.pots -= 1
         if PlayerIG.health > PlayerIG.maxhealth:
             PlayerIG.health = PlayerIG.maxhealth 
         print("You drink the special 'potion'.")
         
-    option = input("-> ").lower() # pylint: disable=unused-variable
+    print("Press enter to continue")
     fight()
     
 def run():
@@ -280,7 +282,7 @@ def run():
     runnum = random.randint(1, 3)
     if runnum == 1:
         print("You ran away like a little girl.")
-        option = input("-> ").lower() # pylint: disable=unused-variable
+        print("Press enter to continue")
         start1()
     else:
         print("Way to fail at running away.")
@@ -299,20 +301,19 @@ def run():
         
 
 def win():
-    os.system('cls||clear')
+    #os.system('cls||clear')
     enemy.health = enemy.maxhealth
     PlayerIG.gold += enemy.gold
     print("You won against %s." % enemy.name)
     print("You found %i gold." % enemy.gold)
     print("Press enter to continue")
-    option = input(" ").lower() # pylint: disable=unused-variable
     start1()
     
     
 def dead():
     os.system('cls||clear')
     print("You've died.")
-    option = input(" ").lower() # pylint: disable=unused-variable
+    print("Press enter to continue")
 
 def shop():
     os.system('cls||clear')

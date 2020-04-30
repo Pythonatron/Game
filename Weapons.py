@@ -12,6 +12,7 @@ cweapatk = {
         "lance":random.randint(1, 8),
         "greatsword":random.randint(1, 8),
         "longsword":random.randint(1, 8),
+        "admin":100000000000000000000000,
         "halberd":random.randint(1, 8),
         "war hammer":random.randint(1, 8),
         "spear":random.randint(1, 8),
