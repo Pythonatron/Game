@@ -53,7 +53,7 @@ def savel():
  
 
 def main():
-    os.system('cls')
+    os.system('cls||clear')
     mTitle()
     sTitle()    
     savel()    
@@ -62,7 +62,7 @@ def main():
         setup1()
     elif option.lower() == "load":
         if os.path.exists("savefile") == True:
-            os.system('cls')
+            os.system('cls||clear')
             with open('savefile', 'rb') as f:
                 global PlayerIG
                 PlayerIG = pickle.load(f)
@@ -81,7 +81,7 @@ def main():
 
 def setup1():
     global PlayerIG
-    os.system('cls')
+    os.system('cls||clear')
     option = input("Name: ")
     PlayerIG = Player(option,'','','','','','','','','','','','',)
     setup2()
@@ -106,12 +106,12 @@ def setup2():
         PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['rusty dagger'],['rusty dagger'],"A cloud of smoke and he appears. The master of suprise!",40,0) 
         start1()
     else:
-        os.system('cls')
+        os.system('cls||clear')
         print("Incorrect class, try again")
         setup2()
 
 def start1():
-    os.system('cls')
+    os.system('cls||clear')
     print("Welcome %s.." % PlayerIG.name)
     print("Class: %s" % PlayerIG.classn)
     print("Attack: %i" % PlayerIG.attack)
@@ -130,7 +130,7 @@ def start1():
     elif option.lower() == "shop":
         shop()
     elif option.lower() == "save":
-        os.system('cls')
+        os.system('cls||clear')
         with open('savefile', 'wb') as f:
             pickle.dump(PlayerIG, f)
             print("Your progress has been saved!")
@@ -144,7 +144,7 @@ def start1():
         start1()
 
 def inventory():
-    os.system('cls')
+    os.system('cls||clear')
     print("What would you like to do in here?")
     print("Equip")
     print("Back")
@@ -158,7 +158,7 @@ def inventory():
         start1()
 
 def equip():
-    os.system('cls')
+    os.system('cls||clear')
     print("-------------------------------------")
     print("|  Type the weapon name to equip it |")
     print("|       Type back to leave          |")
@@ -218,7 +218,7 @@ def prefight():
 
 
 def fight():
-    os.system('cls')
+    os.system('cls||clear')
     print("%s             vs                %s\n" % (PlayerIG.name, enemy.name))
     print("%s's Health: %d/%d                       %s's Health: %i/%i\n" % (PlayerIG.name, PlayerIG.health, PlayerIG.maxhealth, enemy.name, enemy.health, enemy.maxhealth))
     print("Potions %i\n" % PlayerIG.pots)
@@ -237,9 +237,13 @@ def fight():
 
 
 def attack():
-    os.system('cls')
-    PAttack = random.randint(PlayerIG.attack / 2, PlayerIG.attack)*2
-    EAttack = random.randint(enemy.attack / 2, enemy.attack)
+    os.system('cls||clear')
+    #PAttack = random.randint(PlayerIG.attack / 2, PlayerIG.attack)*2
+    #EAttack = random.randint(enemy.attack / 2, enemy.attack)*2
+    PAttack = PlayerIG.attack #implement armor system.
+    EAttack = enemy.attack
+    
+    
     if PAttack == PlayerIG.attack / 2:
         print("Silly player, missing is for kids.")
     else:
@@ -248,7 +252,7 @@ def attack():
         option = input("-> ").lower() # pylint: disable=unused-variable 
     if enemy.health <= 0:
         win()
-        os.system('cls')
+        os.system('cls||clear')
     if EAttack == enemy.attack/2:
         print("Phew! That was a close one.")
     else:
@@ -260,20 +264,22 @@ def attack():
     else:
         fight()
     
-def drinkpot():
-    os.system('cls')
+def drinkpot(): #bug that causes infinite potions
+    os.system('cls||clear')
     if PlayerIG.pots == 0:
         print("You currently have no potions.")
     else:
         PlayerIG.health += 50
+        PlayerIG.pots - 1
         if PlayerIG.health > PlayerIG.maxhealth:
-            PlayerIG.health = PlayerIG.maxhealth
+            PlayerIG.health = PlayerIG.maxhealth 
         print("You drink the special 'potion'.")
+        
     option = input("-> ").lower() # pylint: disable=unused-variable
     fight()
     
 def run():
-    os.system('cls')
+    os.system('cls||clear')
     runnum = random.randint(1, 3)
     if runnum == 1:
         print("You ran away like a little girl.")
@@ -282,7 +288,7 @@ def run():
     else:
         print("Way to fail at running away.")
         option = input(" ").lower()
-        os.system('cls')
+        os.system('cls||clear')
         EAttack = random.randint(enemy.attack / 2, enemy.attack)
         if EAttack == enemy.attack/2:
             print("Phew! That was a close one.")
@@ -296,7 +302,7 @@ def run():
         
 
 def win():
-    os.system('cls')
+    os.system('cls||clear')
     enemy.health = enemy.maxhealth
     PlayerIG.gold += enemy.gold
     print("You won against %s." % enemy.name)
@@ -306,12 +312,12 @@ def win():
     
     
 def dead():
-    os.system('cls')
+    os.system('cls||clear')
     print("You've died.")
     option = input(" ").lower() # pylint: disable=unused-variable
 
 def shop():
-    os.system('cls')
+    os.system('cls||clear')
     print("-----------------------------------")
     print("|       Shhhawwwwp??!?!?          |")
     print("|  Type the weapon name to buy it |")
@@ -332,21 +338,21 @@ def shop():
     option = input("-> ").lower() 
     if option in weapr:
         if PlayerIG.gold >= weapr[option]:
-            os.system('cls')
+            os.system('cls||clear')
             PlayerIG.gold -= weapr[option]
             PlayerIG.weapon.append(option)
             print("Aquired %s!" % option)
             option = input(" ").lower 
             shop()
         else:
-            os.system('cls')
+            os.system('cls||clear')
             print('You do not have enough gold.')
             option = input(" ").lower()
             shop()
     elif option.lower() == "back":
         start1()
     else:
-        os.system('cls')
+        os.system('cls||clear')
         print("Something went wrong.")
         option = input(" ").lower()
         shop()

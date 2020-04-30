@@ -1,10 +1,10 @@
 import random
 #Tierd system?
 cweapatk = {
-        "small dagger": random.randint(0,3),
-        'old staff': random.randint(0,3),
-        "fists": random.randint(0,3),
-        "worn bow": random.randint(0,3),
+        "small dagger": random.randint(1,3),
+        'old staff': random.randint(1,3),
+        "fists": random.randint(1,3),
+        "worn bow": random.randint(1,3),
         "slice of pizza": random.randint(1, 9)/100,
         "zeus lightning": random.randint(5000, 10000),
         "brace knuckles": random.randint(1, 8),

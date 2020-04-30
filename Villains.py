@@ -7,7 +7,7 @@ class skeleton:
         self.name = name
         self.maxhealth = random.randint(5, 10)
         self.health = self.maxhealth
-        self.attack = random.randint(1, 6)*2
+        self.attack = random.randint(1, 6)
         self.gold = random.randint(1, 15)
         self.xp = 100
         self.armor = random.randint(0, 5)
@@ -20,7 +20,7 @@ class rick:
         self.name = name
         self.maxhealth = random.randint(999999, 999999999)
         self.health = self.maxhealth
-        self.attack = random.randint(999999, 999999999)*2
+        self.attack = random.randint(999999, 999999999)
         self.gold = random.randint(0, 1)
         self.xp = 1000000
         self.armor = random.randint(999999, 999999999)
@@ -33,7 +33,7 @@ class diabetes:
         self.name = name
         self.maxhealth = random.randint(5, 15)
         self.health = self.maxhealth
-        self.attack = random.randint(10, 20)*2
+        self.attack = random.randint(10, 20)
         self.gold = random.randint(1, 10)
         self.xp = 150
         self.armor = random.randint(0, 5)
@@ -46,7 +46,7 @@ class goblin:
         self.name = name
         self.maxhealth = random.randint(5, 30)
         self.health = self.maxhealth
-        self.attack = random.randint(5, 15)*2
+        self.attack = random.randint(5, 15)
         self.gold = random.randint(1, 15)
         self.xp = 100
         self.armor = random.randint(0, 5)
@@ -59,7 +59,7 @@ class vampire:
         self.name = name
         self.maxhealth = random.randint(10, 20)
         self.health = self.maxhealth
-        self.attack = random.randint(10, 20)*2
+        self.attack = random.randint(10, 20)
         self.gold = random.randint(1, 10)
         self.xp = 162
         self.armor = random.randint(0, 10)
@@ -72,7 +72,7 @@ class scrooge:
         self.name = name
         self.maxhealth = random.randint(30, 60)
         self.health = self.maxhealth
-        self.attack = random.randint(50, 60)*2
+        self.attack = random.randint(50, 60)
         self.gold = random.randint(100, 150)
         self.xp = 100
         self.armor = random.randint(2, 10)
@@ -85,7 +85,7 @@ class hoyt:
         self.name = name
         self.maxhealth = random.randint(5, 15)
         self.health = self.maxhealth
-        self.attack = random.randint(1, 100)*2
+        self.attack = random.randint(1, 100)
         self.gold = random.randint(10, 100)
         self.xp = 265
         self.armor = random.randint(0, 2)
@@ -98,7 +98,7 @@ class zombie:
         self.name = name
         self.maxhealth = random.randint(2, 10)
         self.health = self.maxhealth
-        self.attack = random.randint(1, 10)*2
+        self.attack = random.randint(1, 10)
         self.gold = random.randint(1, 13)
         self.xp = 10
         self.armor = random.randint(0, 3)
@@ -111,7 +111,7 @@ class werep:
         self.name = name
         self.maxhealth = random.randint(5, 20)
         self.health = self.maxhealth
-        self.attack = random.randint(5, 20)*2
+        self.attack = random.randint(5, 20)
         self.gold = random.randint(1, 10)
         self.xp = 100
         self.armor = random.randint(0, 3)
@@ -124,7 +124,7 @@ class waly:
         self.name = name
         self.maxhealth = random.randint(5, 20)
         self.health = self.maxhealth
-        self.attack = random.randint(5, 20)*2
+        self.attack = random.randint(5, 20)
         self.gold = random.randint(1, 10)
         self.xp = 100
         self.armor = random.randint(0, 3)
@@ -137,7 +137,7 @@ class death:
         self.name = name
         self.maxhealth = random.randint(400, 1000)
         self.health = self.maxhealth
-        self.attack = random.randint(50, 100)*2
+        self.attack = random.randint(50, 100)
         self.gold = random.randint(1000, 1987)
         self.xp = 500
         self.armor = random.randint(3, 10)
