@@ -8,10 +8,6 @@ from Weapons import *
 from Villains import SkeletonIG, RickIG, DiabetesIG, GoblinIG, VampireIG, ScroogeIG, HoytIG, ZombieIG, WerepIG, WalyIG, DeathIG
 from random import choices
 
-init()
-os.system('mode con: cols=101 lines=30')
-
-
 #Introduce Armor System
 #inventory add printed back command
 
@@ -244,18 +240,22 @@ def attack():
     EAttack = enemy.attack   #why isn't death listed?
     
     if PAttack == PlayerIG.attack / 2:
+        os.system('cls||clear')
         print("Silly player, missing is for kids.")
-        print("Press enter to continue")
+        input("Press enter to continue")
     else:
         enemy.health -= PAttack
+        os.system('cls||clear')
         print("You dealt %i damage" % PAttack)
         input("Press enter to continue") 
     if enemy.health <= 0:
         win()
     if EAttack == enemy.attack / 2:
+        os.system('cls||clear')
         print("Phew! That was a close one.")
     else:
         PlayerIG.health -= EAttack
+        os.system('cls||clear')
         print("%s did %i damage!" % (enemy.name, EAttack))
         input("Press enter to continue")
     if PlayerIG.health <=0:
@@ -274,7 +274,7 @@ def drinkpot():
             PlayerIG.health = PlayerIG.maxhealth 
         print("You drink the special 'potion'.")
         
-    print("Press enter to continue")
+    input("Press enter to continue")
     fight()
     
 def run():
@@ -282,7 +282,7 @@ def run():
     runnum = random.randint(1, 3)
     if runnum == 1:
         print("You ran away like a little girl.")
-        print("Press enter to continue")
+        input("Press enter to continue")
         start1()
     else:
         print("Way to fail at running away.")
@@ -301,19 +301,19 @@ def run():
         
 
 def win():
-    #os.system('cls||clear')
+    os.system('cls||clear')
     enemy.health = enemy.maxhealth
     PlayerIG.gold += enemy.gold
     print("You won against %s." % enemy.name)
     print("You found %i gold." % enemy.gold)
-    print("Press enter to continue")
+    input("Press enter to continue")
     start1()
     
     
 def dead():
     os.system('cls||clear')
     print("You've died.")
-    print("Press enter to continue")
+    input("Press enter to continue")
 
 def shop():
     os.system('cls||clear')
@@ -394,11 +394,14 @@ def mbTitle():
     print('#                                    Press enter to continue                                      #')
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
-mTitle()
-mbTitle()
-#print_slow (text)
-print("")
-print("")
-input('')
-sTitle()
-main()
+def boot():
+    init()
+    os.system('mode con: cols=101 lines=30')
+    mTitle()
+    mbTitle()
+    #print_slow (text)
+    print("")
+    print("")
+    input('')
+    sTitle()
+    main()
