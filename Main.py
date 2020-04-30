@@ -13,7 +13,6 @@ os.system('mode con: cols=101 lines=30')
 
 
 #Introduce Armor System
-#display amount of gold in shop
 #inventory add printed back command
 
 class Player:
@@ -238,27 +237,25 @@ def fight():
 
 def attack():
     os.system('cls||clear')
-    #PAttack = random.randint(PlayerIG.attack / 2, PlayerIG.attack)*2
-    #EAttack = random.randint(enemy.attack / 2, enemy.attack)*2
-    PAttack = PlayerIG.attack #implement armor system.
-    EAttack = enemy.attack
-    
+    PAttack = PlayerIG.attack #implement armor system. #shit, i removed the miss system...
+    EAttack = enemy.attack   #why isn't death listed?
     
     if PAttack == PlayerIG.attack / 2:
         print("Silly player, missing is for kids.")
+        print("Press enter to continue")
     else:
         enemy.health -= PAttack
         print("You dealt %i damage" % PAttack)
-        option = input("-> ").lower() # pylint: disable=unused-variable 
+        input("Press enter to continue") 
     if enemy.health <= 0:
         win()
         os.system('cls||clear')
-    if EAttack == enemy.attack/2:
+    if EAttack == enemy.attack / 2:
         print("Phew! That was a close one.")
     else:
         PlayerIG.health -= EAttack
         print("%s did %i damage!" % (enemy.name, EAttack))
-        option = input("-> ").lower()
+        input("Press enter to continue")
     if PlayerIG.health <=0:
         dead()
     else:
@@ -307,6 +304,7 @@ def win():
     PlayerIG.gold += enemy.gold
     print("You won against %s." % enemy.name)
     print("You found %i gold." % enemy.gold)
+    print("Press enter to continue")
     option = input(" ").lower() # pylint: disable=unused-variable
     start1()
     
@@ -341,7 +339,7 @@ def shop():
             os.system('cls||clear')
             PlayerIG.gold -= weapr[option]
             PlayerIG.weapon.append(option)
-            print("Aquired %s!" % option)
+            print("Acquired %s!" % option)
             option = input(" ").lower 
             shop()
         else:
@@ -386,13 +384,13 @@ def sTitle():
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
 def mbTitle():
-    print("#                           Welcome to Michael's Python Game: For The Lulz                        #") # pylint: disable=anomalous-backslash-in-string
+    print("#                           Welcome to Pythonatron's Python Game: For The Lulz                    #") # pylint: disable=anomalous-backslash-in-string
     print('#                                        Semi-Basic Text RPG                                      #') # pylint: disable=anomalous-backslash-in-string
     print('#                                 Basic Commands: Start, Load, Exit                               #') # pylint: disable=anomalous-backslash-in-string
     print('#                               Maybe some hidden commands.. Who knows?                           #') # pylint: disable=anomalous-backslash-in-string
     print('#                                  No Peeking at the Code Either!                                 #') # pylint: disable=anomalous-backslash-in-string
     print('#                                                                                                 #') # pylint: disable=anomalous-backslash-in-string
-    print('#                                    Press any key to continue                                    #')
+    print('#                                    Press enter to continue                                      #')
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
 mTitle()
