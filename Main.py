@@ -323,6 +323,7 @@ def shop():
     print("|       Type back to leave        |")
     print("|These are your available weapons |")
     print("|     Yeah I know it's ugly       |")
+    print("| But I don't know how to fix it! |")
     print("|     Aviailable Gold: %s         |" % PlayerIG.gold )
     print("-----------------------------------")
     it = iter(weapr.items())
