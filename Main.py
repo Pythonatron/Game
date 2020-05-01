@@ -1,12 +1,16 @@
-from colorama import init
 import os
-from time import sleep
 import pickle
-import sys
 import random
-from Weapons import *
-from Villains import SkeletonIG, RickIG, DiabetesIG, GoblinIG, VampireIG, ScroogeIG, HoytIG, ZombieIG, WerepIG, WalyIG, DeathIG
+import sys
 from random import choices
+from time import sleep
+
+from colorama import init
+
+from Villains import (
+    DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
+    VampireIG, WalyIG, WerepIG, ZombieIG)
+from Weapons import *
 
 #Introduce Armor System
 #inventory add printed back command
@@ -62,11 +66,11 @@ def main():
                 global PlayerIG
                 PlayerIG = pickle.load(f)
             print("Savegame has been loaded. Good Luck!")
-            option = input("-> ").lower()
+            input('Press Enter')
             start1()
         else:
             print("There is no save file.")
-            option = input("-> ").lower()
+            input('Press Enter')
             main()
     elif option.lower() == "exit":
         sys.exit()
@@ -83,7 +87,7 @@ def setup1():
     
 def setup2():
     global PlayerIG
-    print("Choose from ranger, mage, warrior, priest, rogue")
+    print("Choose from Ranger, Mage, Warrior, Priest, Rogue")
     choice = input("Class: ").lower()
     if choice == "warrior":
         PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['fists'],['fists'],"Brutal.",10,0)
@@ -117,11 +121,13 @@ def start1():
     print("Health: %i/%i" % (PlayerIG.health, PlayerIG.maxhealth))
     print("Potions: %i" % PlayerIG.pots)
     print("Gold: %i\n" % PlayerIG.gold)
+    print('---------------------')
+    print("Inventory")
     print("Fight")
     print("Shop")
     print("Save")
     print("Exit")
-    print("Inventory")
+    
     option = input("-> ").lower()
     if option.lower() == "fight":
         prefight()
@@ -132,7 +138,7 @@ def start1():
         with open('savefile', 'wb') as f:
             pickle.dump(PlayerIG, f)
             print("Your progress has been saved!")
-        option = input("-> ").lower()
+        input('Press Enter')
         start1()
     elif option.lower() == "exit":
         sys.exit()
@@ -144,8 +150,8 @@ def start1():
 def inventory():
     os.system('cls||clear')
     print("What would you like to do in here?")
-    print("Equip")
-    print("Back")
+    print('Equip')
+    print('Back')
     
     option = input("-> ").lower()
     if option.lower() == "equip":
@@ -164,20 +170,20 @@ def equip():
     print("-------------------------------------")
     for weapon in PlayerIG.weapon:
         print(weapon)
-    option = input("-> ").lower()
+    option = input('Choose Your Weapon:').lower()
     if option.lower() == PlayerIG.currweapon:
         print("You're currently already holding %s" % PlayerIG.currweapon)
-        option = input("-> ").lower()
+        input('Press Enter')
         equip()
     elif option.lower() == "back":
         inventory()
     elif option.lower() in PlayerIG.weapon:
         PlayerIG.currweapon = option.lower()
         print("Changed weapon to %s" % PlayerIG.currweapon) #display attack increase?
-        option = input("-> ").lower()
+        input("Press Enter").lower()
         equip()
     else:
-        print("Something went wrong")
+        print('ERROR SHOP')
         
         
         
@@ -220,8 +226,9 @@ def fight():
     print("%s             vs                %s\n" % (PlayerIG.name, enemy.name))
     print("%s's Health: %d/%d                       %s's Health: %i/%i\n" % (PlayerIG.name, PlayerIG.health, PlayerIG.maxhealth, enemy.name, enemy.health, enemy.maxhealth))
     print("Potions %i\n" % PlayerIG.pots)
-    print("Attack")
+    print('----------------')
     print("Drink potion")
+    print("Attack")
     print("Run")
     option = input("-> ").lower()
     if option.lower() == "attack":
@@ -253,6 +260,7 @@ def attack():
     if EAttack == enemy.attack / 2:
         os.system('cls||clear')
         print("Phew! That was a close one.")
+        input('Press Enter')
     else:
         PlayerIG.health -= EAttack
         os.system('cls||clear')
@@ -286,14 +294,15 @@ def run():
         start1()
     else:
         print("Way to fail at running away.")
-        option = input(" ").lower()
+        input('Press Enter')
         os.system('cls||clear')
         EAttack = random.randint(enemy.attack / 2, enemy.attack)
         if EAttack == enemy.attack/2:
             print("Phew! That was a close one.")
+            input('Press Enter')
         else:
             print("%s did %i damage!" % (enemy.name, EAttack))
-            option = input(" ").lower()
+            input('Press Enter')
         if PlayerIG.health <=0:
             dead()
         else:
@@ -314,6 +323,7 @@ def dead():
     os.system('cls||clear')
     print("You've died.")
     input("Press enter to continue")
+    boot()
 
 def shop():
     os.system('cls||clear')
@@ -326,35 +336,29 @@ def shop():
     print("| But I don't know how to fix it! |")
     print("|     Aviailable Gold: %s         |" % PlayerIG.gold )
     print("-----------------------------------")
-    it = iter(weapr.items())
-    for item in it:
-        try:
-            n = next(it)
-        except StopIteration:
-            print('{}: {}'.format(*item))
-        else:
-            print('{}: {} gold'.format(*item), '\t     {}: {} gold'.format(*n))
-    
-    option = input("-> ").lower() 
-    if option in weapr:
-        if PlayerIG.gold >= weapr[option]:
-            os.system('cls||clear')
-            PlayerIG.gold -= weapr[option]
+    #
+    #
+    #  List[Weapon - Price (mind - maxd)]
+    #
+    #
+    option = input("Choose your weapon: ").lower()
+    if option in WEAPONS:
+        if PlayerIG.gold >= WEAPONS[option]['highprice']: #Figure out random price between lowprice and highprice
+            PlayerIG.gold -= WEAPONS[option]['highprice']
             PlayerIG.weapon.append(option)
-            print("Acquired %s!" % option)
-            option = input(" ").lower 
+            print('Acquired %s!' % option) #Show damage increase?
+            input('Press Enter')
             shop()
         else:
-            os.system('cls||clear')
             print('You do not have enough gold.')
-            option = input(" ").lower()
+            print('Available Gold =',PlayerIG.gold)
+            input('Press Enter')
             shop()
     elif option.lower() == "back":
         start1()
     else:
-        os.system('cls||clear')
         print("Something went wrong.")
-        option = input(" ").lower()
+        input('Press Enter')
         shop()
         
 
@@ -406,3 +410,5 @@ def boot():
     input('')
     sTitle()
     main()
+
+boot()
