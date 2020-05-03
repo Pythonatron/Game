@@ -32,12 +32,21 @@ class Player:
         self.gold = gold
         self.xp = xp
 
-    @property 
     def attack(self): 
         attack = self.base_attack
-        if str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",'') in cweapatk:
-            attack += cweapatk.get(str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",''))
+        if str(PlayerIG.currweapon)in WEAPONS[PlayerIG.currweapon]:
+            lowdamage = WEAPONS[PlayerIG.currweapon['lowdamage']]
+            highdamage = WEAPONS[PlayerIG.currweapon['highdamage']]
+            rnddmg = random.randint(lowdamage, highdamage)
+            attack += rnddmg
         return attack
+
+    #@property 
+    #def attack(self): 
+    #    attack = self.base_attack
+    #    if str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",'') in cweapatk:
+    #        attack += cweapatk.get(str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",''))
+    #    return attack
 
 def savel():
     if os.path.exists("savefile") == True:
@@ -411,4 +420,4 @@ def boot():
     sTitle()
     main()
 
-boot()
+#boot()
