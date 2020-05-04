@@ -10,7 +10,8 @@ from colorama import init
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
-33333333333333333333
+
+)
 
 #Introduce Armor System
 #inventory add printed back command
