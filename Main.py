@@ -4,18 +4,17 @@ import random
 import sys
 from random import choices
 from time import sleep
-
 from colorama import init
 
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
-    VampireIG, WalyIG, WerepIG, ZombieIG)
-
+    VampireIG, WalyIG, WerepIG, ZombieIG
 )
 
-#Introduce Armor System
-#inventory add printed back command
-class Weapon:
+#Enemies are way underpowered........
+#warrior can oneshot most....
+
+class Weapon: #looks good
     def __init__(self):
         self.Name = ""
         self.lowprice = 0
@@ -27,7 +26,7 @@ class Weapon:
         self.special = ""
         self.durability = 0
         
-    def weapon_details(self,weaponID):
+    def weapon_details(self,weaponID): #looks good
         with open('WEAPONS.txt', 'r', encoding="utf8") as f:
             for line in f:
                 parts = line.split(",")
@@ -43,7 +42,7 @@ class Weapon:
                     self.durability = parts [8]
                     break
      
-    def weapon_info(self):
+    def weapon_info(self): #looks good.. Will i ever really use this?
         print("\nName:            ", self.name)
         print("Low Price:         ",self.lowprice)
         print("High Price:        ",self.highprice)
@@ -54,8 +53,8 @@ class Weapon:
         print("Special Ability:   ",self.special)
         print("Durability:        ",self.durability)  
         
-class Player:
-    def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0, xp=0):
+class Player: #looks good
+    def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0):
         self.name = name
         self.maxhealth = maxhealth
         self.health = self.maxhealth
@@ -69,10 +68,10 @@ class Player:
         self.currweapon =  currweapon
         self.description = description
         self.gold = gold
-        self.xp = xp
+        
 
     @property   
-    def attack(self):
+    def attack(self): #looks good
         attack = self.base_attack
         weapon = Weapon()
         weapon.weapon_details(str(self.currweapon).capitalize())
@@ -83,7 +82,7 @@ class Player:
             attack += idgaf
         return attack
 
-def savel():
+def savel(): #looks good
     if os.path.exists("savefile") == True:
         answer = "Saved Game Found"
         print ('\033[12;38f',answer)
@@ -95,7 +94,7 @@ def savel():
 
  
 
-def main():
+def main(): #looks good
     os.system('cls||clear')
     mTitle()
     sTitle()    
@@ -110,11 +109,11 @@ def main():
                 global PlayerIG
                 PlayerIG = pickle.load(f)
             print("Savegame has been loaded. Good Luck!")
-            input('Press Enter')
+            input('Press Enter to Continue')
             start1()
         else:
             print("There is no save file.")
-            input('Press Enter')
+            input('Press Enter to Continue')
             main()
     elif option.lower() == "exit":
         sys.exit()
@@ -122,57 +121,57 @@ def main():
         main()
 
 
-def setup1():
+def setup1(): #Should i make pretty borders for these functions as well?
     global PlayerIG
     os.system('cls||clear')
-    option = input("Name: ")
-    PlayerIG = Player(option,'','','','','','','','','','','','',)
+    print("Please choose something for your name..")
+    option = input("Name-> ")
+    PlayerIG = Player(option,'','','','','','','','','','','')
     setup2()
     
-def setup2():
+def setup2(): #looks good #Do I need multiple globals of the same thing?
     global PlayerIG
     print("Choose from Ranger, Mage, Warrior, Priest, Rogue")
-    choice = input("Class: ").lower()
+    choice = input("Class-> ").lower()
     if choice == "warrior":
-        PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['fists'],['fists'],"Brutal.",10,0)
+        PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['Fists'],['Fists'],"Brutal.",10)
         start1()
     elif choice == "mage":
-        PlayerIG = Player(PlayerIG.name,70,4,2,5,10,"Mage",0,['old staff'],['old staff'],"You're a Wizard Harry.",15,0) 
+        PlayerIG = Player(PlayerIG.name,70,4,2,5,10,"Mage",0,['Old Staff'],['Old Staff'],"You're a Wizard Harry.",15) 
         start1()
     elif choice == "ranger":
-        PlayerIG = Player(PlayerIG.name,80,8,1,2,0,"Ranger",0,['warn bow'],['warn bow'],"Not Your Average Walker Texas Ranger.",10,0) 
+        PlayerIG = Player(PlayerIG.name,80,8,1,2,0,"Ranger",0,['Warn Bow'],['Warn Bow'],"Not Your Average Walker Texas Ranger.",10) 
         start1()
     elif choice == "priest":
-        PlayerIG = Player(PlayerIG.name,50,5,5,7,4,"Priest",0,['old staff'],['old staff'],"Praise be to Yevon.",5,0) 
+        PlayerIG = Player(PlayerIG.name,50,5,5,7,4,"Priest",0,['Old Staff'],['Old Staff'],"Praise be to Yevon.",5) 
         start1()
     elif choice == "rogue":
-        PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['rusty dagger'],['rusty dagger'],"A cloud of smoke and he appears. The master of suprise!",40,0) 
+        PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['Rusty Dagger'],['Rusty Dagger'],"A cloud of smoke and he appears. The master of suprise!",40) 
         start1()
     elif choice == "god":
-        PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['admin'],['admin'],"",1000,0) 
+        PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['Admin'],['Admin'],"",1000) 
         start1()
     else:
         os.system('cls||clear')
         print("Incorrect class, try again")
         setup2()
 
-def start1():
+def start1(): #Finished for now!
     os.system('cls||clear')
-    print("Welcome %s.." % PlayerIG.name)
-    print("Class: %s" % PlayerIG.classn)
-    print("Attack: %i" % PlayerIG.attack)
-    print("Current Weapon: %s" % PlayerIG.currweapon)
-    print("Health: %i/%i" % (PlayerIG.health, PlayerIG.maxhealth))
-    print("Potions: %i" % PlayerIG.pots)
-    print("Gold: %i\n" % PlayerIG.gold)
-    print('---------------------')
-    print("Inventory")
-    print("Fight")
-    print("Shop")
-    print("Save")
-    print("Exit")
+    print("----------------------------------------------")
+    print("| Welcome %s" % PlayerIG.name)
+    print("| Class: %s" % PlayerIG.classn)
+    print("|\t", PlayerIG.description)
+    print("| Health: %i/%i" % (PlayerIG.health, PlayerIG.maxhealth))
+    print("| Current Weapon: %s" % str(PlayerIG.currweapon).replace("[","").replace("]","").replace("'",""))
+    print("|\t\t    (%i damage)" % PlayerIG.attack)
+    print("| Potions: %i      Gold: %i" % (PlayerIG.pots, PlayerIG.gold))
+    print('----------------------------------------------')
+    print("  Inventory                        Fight    ")
+    print("  Shop                             Save     ")
+    print("                 Exit                       ")
     
-    option = input("-> ").lower()
+    option = input("Option-> ").lower()
     if option.lower() == "fight":
         prefight()
     elif option.lower() == "shop":
@@ -182,7 +181,7 @@ def start1():
         with open('savefile', 'wb') as f:
             pickle.dump(PlayerIG, f)
             print("Your progress has been saved!")
-        input('Press Enter')
+        input('Press Enter to Continue')
         start1()
     elif option.lower() == "exit":
         sys.exit()
@@ -191,11 +190,13 @@ def start1():
     else:
         start1()
 
-def inventory():
+def inventory(): #looks good
     os.system('cls||clear')
-    print("What would you like to do in here?")
-    print('Equip')
-    print('Back')
+    print("-------------------------------------")
+    print("|     Unneeded Inventory Screen     |")
+    print("|          Equip or Back            |")
+    print("|         (Yeop, That's it)         |")
+    print("-------------------------------------")
     
     option = input("-> ").lower()
     if option.lower() == "equip":
@@ -205,7 +206,7 @@ def inventory():
     else:
         start1()
 
-def equip():
+def equip(): #looks good?
     os.system('cls||clear')
     print("-------------------------------------")
     print("|  Type the weapon name to equip it |")
@@ -217,7 +218,7 @@ def equip():
     option = input('Choose Your Weapon:').lower()
     if option.lower() == PlayerIG.currweapon:
         print("You're currently already holding %s" % PlayerIG.currweapon)
-        input('Press Enter')
+        input('Press Enter to Continue')
         equip()
     elif option.lower() == "back":
         inventory()
@@ -233,7 +234,7 @@ def equip():
         
         
         
-def prefight():
+def prefight(): #looks good, probably finished till something ELSE gets implemented
     population = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
     weights = SkeletonIG.chance, RickIG.chance, DiabetesIG.chance, GoblinIG.chance, VampireIG.chance, ScroogeIG.chance, HoytIG.chance, ZombieIG.chance, WerepIG.chance, WalyIG.chance, DeathIG.chance, 
     results = choices(population,  weights)
@@ -265,7 +266,7 @@ def prefight():
     fight()
 
 
-def fight():
+def fight(): #This could probably be prettier
     os.system('cls||clear')
     print("%s             vs                %s\n" % (PlayerIG.name, enemy.name))
     print("%s's Health: %d/%d                       %s's Health: %i/%i\n" % (PlayerIG.name, PlayerIG.health, PlayerIG.maxhealth, enemy.name, enemy.health, enemy.maxhealth))
@@ -285,7 +286,7 @@ def fight():
         fight()
 
 
-def attack():
+def attack(): #fix this
     os.system('cls||clear')
     PAttack = PlayerIG.attack #implement armor system. # shit, i removed the miss system...
     EAttack = enemy.attack   #why isn't death listed?
@@ -304,7 +305,7 @@ def attack():
     if EAttack == enemy.attack / 2:
         os.system('cls||clear')
         print("Phew! That was a close one.")
-        input('Press Enter')
+        input('Press Enter to Continue')
     else:
         PlayerIG.health -= EAttack
         os.system('cls||clear')
@@ -315,7 +316,7 @@ def attack():
     else:
         fight()
     
-def drinkpot(): 
+def drinkpot(): #looks good
     os.system('cls||clear')
     if PlayerIG.pots == 0:
         print("You currently have no potions.")
@@ -329,7 +330,7 @@ def drinkpot():
     input("Press enter to continue")
     fight()
     
-def run():
+def run(): #looks good
     os.system('cls||clear')
     runnum = random.randint(1, 3)
     if runnum == 1:
@@ -338,22 +339,22 @@ def run():
         start1()
     else:
         print("Way to fail at running away.")
-        input('Press Enter')
+        input('Press Enter to Continue')
         os.system('cls||clear')
         EAttack = random.randint(enemy.attack / 2, enemy.attack)
         if EAttack == enemy.attack/2:
             print("Phew! That was a close one.")
-            input('Press Enter')
+            input('Press Enter to Continue')
         else:
             print("%s did %i damage!" % (enemy.name, EAttack))
-            input('Press Enter')
+            input('Press Enter to Continue')
         if PlayerIG.health <=0:
             dead()
         else:
             fight()
         
 
-def win():
+def win(): #looks good
     os.system('cls||clear')
     enemy.health = enemy.maxhealth
     PlayerIG.gold += enemy.gold
@@ -363,13 +364,13 @@ def win():
     start1()
     
     
-def dead():
+def dead(): #looks good
     os.system('cls||clear')
     print("You've died.")
     input("Press enter to continue")
     boot()
 
-def shop():
+def shop(): #needs fixed
     os.system('cls||clear')
     print("-----------------------------------")
     print("|       Shhhawwwwp??!?!?          |")
@@ -410,24 +411,24 @@ def shop():
                             idgaf2 = random.randint(ld,hd)
                             print('Acquired %s!' % option) #Show damage increase?
                             print("Damage Difference roughly of: ",idgaf2 - prevdamage)
-                            input('Press Enter')
+                            input('Press Enter to Continue')
                             shop()
                         else:
                             print('You do not have enough gold.')
                             print('Available Gold =',PlayerIG.gold)
-                            input('Press Enter')
+                            input('Press Enter to Continue')
                             shop()
                     elif option.lower() == "back":
                         start1()
                     else:
                         print("Something went wrong.")
-                        input('Press Enter')
+                        input('Press Enter to Continue')
                         shop()
         
         
 
 
-def print_slow (text):
+def print_slow (text): #looks good
     print ('\033[14;32f'  , end = ' ')
     for x in text:                    
         print (x, end='', flush=True) 
@@ -436,7 +437,7 @@ def print_slow (text):
 text = ' E..n..j..o..y.... mwahahahahaha....?'
 
 
-def  mTitle():
+def  mTitle(): #looks good
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
     print('# ______  ______   ______       ______  __  __   ______       __       __  __   __       ______   #') # pylint: disable=anomalous-backslash-in-string
     print('#/\  ___\/\  __ \ /\  == \     /\__  _\/\ \_\ \ /\  ___\     /\ \     /\ \/\ \ /\ \     /\___  \  #') # pylint: disable=anomalous-backslash-in-string
@@ -446,14 +447,14 @@ def  mTitle():
     print('#                                                                                                 #') # pylint: disable=anomalous-backslash-in-string
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
-def sTitle():
+def sTitle(): #looks good
     print('#                                       Welcome!                                                  #') # pylint: disable=anomalous-backslash-in-string
     print('#           Start                                                    Load                         #') # pylint: disable=anomalous-backslash-in-string
     print('#           Exit                                                     Help                         #') # pylint: disable=anomalous-backslash-in-string
     print('#                                                                                                 #') # pylint: disable=anomalous-backslash-in-string
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
-def mbTitle():
+def mbTitle(): #looks good
     print("#                           Welcome to Pythonatron's Python Game: For The Lulz                    #") # pylint: disable=anomalous-backslash-in-string
     print('#                                        Semi-Basic Text RPG                                      #') # pylint: disable=anomalous-backslash-in-string
     print('#                                 Basic Commands: Start, Load, Exit                               #') # pylint: disable=anomalous-backslash-in-string
@@ -463,16 +464,15 @@ def mbTitle():
     print('#                                    Press enter to continue                                      #')
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
-def boot():
+def boot(): #Do i really need a start screen for the start screen?
     init()
     os.system('mode con: cols=101 lines=30')
     mTitle()
     mbTitle()
-    #print_slow (text)
+    print_slow (text)
     print("")
     print("")
     input('')
     sTitle()
     main()
-
 boot()
