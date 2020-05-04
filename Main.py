@@ -10,11 +10,49 @@ from colorama import init
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
-from Weapons import *
+33333333333333333333
 
 #Introduce Armor System
 #inventory add printed back command
-
+class Weapon:
+    def __init__(self):
+        self.Name = ""
+        self.lowprice = 0
+        self.highprice = 0
+        self.lowdamage = 0
+        self.highdamage = 0
+        self.weaponclass = ""
+        self.condition = ""
+        self.special = ""
+        self.durability = 0
+        
+    def weapon_details(self,weaponID):
+        with open('WEAPONS.txt', 'r', encoding="utf8") as f:
+            for line in f:
+                parts = line.split(",")
+                if str(weaponID) == parts[0]:
+                    self.name = parts [0]
+                    self.lowprice = parts [1]
+                    self.highprice = parts [2]
+                    self.lowdamage = parts [3]
+                    self.highdamage = parts [4]
+                    self.weaponclass = parts [5]
+                    self.condition = parts [6]
+                    self.special = parts [7]
+                    self.durability = parts [8]
+                    break
+     
+    def weapon_info(self):
+        print("\nName:            ", self.name)
+        print("Low Price:         ",self.lowprice)
+        print("High Price:        ",self.highprice)
+        print("\nLow Damage:        ",self.lowdamage)
+        print("High Damage:       ",self.highdamage)
+        print("Weapon Class:      ",self.weaponclass)
+        print("Condition:         ",self.condition)
+        print("Special Ability:   ",self.special)
+        print("Durability:        ",self.durability)  
+        
 class Player:
     def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0, xp=0):
         self.name = name
@@ -32,21 +70,17 @@ class Player:
         self.gold = gold
         self.xp = xp
 
-    def attack(self): 
+    @property   
+    def attack(self):
         attack = self.base_attack
-        if str(PlayerIG.currweapon)in WEAPONS[PlayerIG.currweapon]:
-            lowdamage = WEAPONS[PlayerIG.currweapon['lowdamage']]
-            highdamage = WEAPONS[PlayerIG.currweapon['highdamage']]
-            rnddmg = random.randint(lowdamage, highdamage)
-            attack += rnddmg
+        weapon = Weapon()
+        weapon.weapon_details(str(self.currweapon).capitalize())
+        if PlayerIG.currweapon == self.currweapon:
+            highdamage = int(weapon.highdamage)
+            lowdamage = int(weapon.lowdamage)
+            idgaf = random.randint(lowdamage, highdamage)
+            attack += idgaf
         return attack
-
-    #@property 
-    #def attack(self): 
-    #    attack = self.base_attack
-    #    if str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",'') in cweapatk:
-    #        attack += cweapatk.get(str(PlayerIG.currweapon).replace('[','').replace(']','').replace("'",''))
-    #    return attack
 
 def savel():
     if os.path.exists("savefile") == True:
@@ -342,7 +376,6 @@ def shop():
     print("|       Type back to leave        |")
     print("|These are your available weapons |")
     print("|     Yeah I know it's ugly       |")
-    print("| But I don't know how to fix it! |")
     print("|     Aviailable Gold: %s         |" % PlayerIG.gold )
     print("-----------------------------------")
     #
@@ -350,25 +383,46 @@ def shop():
     #  List[Weapon - Price (mind - maxd)]
     #
     #
-    option = input("Choose your weapon: ").lower()
-    if option in WEAPONS:
-        if PlayerIG.gold >= WEAPONS[option]['highprice']: #Figure out random price between lowprice and highprice
-            PlayerIG.gold -= WEAPONS[option]['highprice']
-            PlayerIG.weapon.append(option)
-            print('Acquired %s!' % option) #Show damage increase?
-            input('Press Enter')
-            shop()
-        else:
-            print('You do not have enough gold.')
-            print('Available Gold =',PlayerIG.gold)
-            input('Press Enter')
-            shop()
-    elif option.lower() == "back":
-        start1()
-    else:
-        print("Something went wrong.")
-        input('Press Enter')
-        shop()
+    
+    option = input("Choose a Weapon:")
+    prevdamage = PlayerIG.attack
+    capitalized_message = " ".join([
+        word.capitalize()
+        for word in option.split(" ")
+    ])
+    with open('WEAPONS.txt', 'r', encoding="utf8") as f:
+                for line in f:
+                    parts = line.split(",")
+                    print("CM",capitalized_message)
+                    print("p0", parts[0])
+                    if 1 == 1:
+                        weapon = Weapon()
+                        weapon.weapon_details(capitalized_message)
+                        highprice = int(weapon.highprice)
+                        lowprice = int(weapon.lowprice)
+                        idgaf = random.randint(lowprice, highprice)
+                        if PlayerIG.gold >= idgaf:
+                            PlayerIG.gold -= idgaf
+                            PlayerIG.weapon.append(capitalized_message)
+                            ld = int(weapon.lowdamage)
+                            hd = int(weapon.highdamage)
+                            idgaf2 = random.randint(ld,hd)
+                            print('Acquired %s!' % option) #Show damage increase?
+                            print("Damage Difference roughly of: ",idgaf2 - prevdamage)
+                            input('Press Enter')
+                            shop()
+                        else:
+                            print('You do not have enough gold.')
+                            print('Available Gold =',PlayerIG.gold)
+                            input('Press Enter')
+                            shop()
+                    elif option.lower() == "back":
+                        start1()
+                    else:
+                        print("Something went wrong.")
+                        input('Press Enter')
+                        shop()
+        
         
 
 
@@ -420,4 +474,4 @@ def boot():
     sTitle()
     main()
 
-#boot()
+boot()
