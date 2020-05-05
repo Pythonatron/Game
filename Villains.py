@@ -1,6 +1,10 @@
 import random
 
-#Finished!
+#What's the point of xp?
+#xp based of of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
+#total defense (which isn't implemented) should be possibly a defense variable +/* armor +/* health
+#should xp incrase the player, weapon or armor or all three?
+#im sure there's a better way to do this as well.. maybe Class Monster ->Skeleton, etc?
 
 class skeleton:
     def __init__(self, name):
@@ -9,7 +13,7 @@ class skeleton:
         self.health = self.maxhealth
         self.attack = random.randint(1, 6)
         self.gold = random.randint(1, 15)
-        self.xp = 100
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 5)
         self.chance = random.randint(10, 20)
         self.description = "You could say he has a -bone- to pick with you."
@@ -22,7 +26,7 @@ class rick:
         self.health = self.maxhealth
         self.attack = random.randint(999999, 999999999)
         self.gold = random.randint(0, 1)
-        self.xp = 1000000
+        self.xp = random.randint(1000000, 10000000)
         self.armor = random.randint(999999, 999999999)
         self.chance = 0.000001
         self.description = "Good Luck."
@@ -35,7 +39,7 @@ class diabetes:
         self.health = self.maxhealth
         self.attack = random.randint(10, 20)
         self.gold = random.randint(1, 10)
-        self.xp = 150
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 5)
         self.chance = random.randint(10, 30)
         self.description = "DIABEETUSSS!"
@@ -48,7 +52,7 @@ class goblin:
         self.health = self.maxhealth
         self.attack = random.randint(5, 15)
         self.gold = random.randint(1, 15)
-        self.xp = 100
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 5)
         self.chance = random.randint(10, 80)
         self.description = "Don't let them near your women."
@@ -61,7 +65,7 @@ class vampire:
         self.health = self.maxhealth
         self.attack = random.randint(10, 20)
         self.gold = random.randint(1, 10)
-        self.xp = 162
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 10)
         self.chance = random.randint(6, 66)
         self.description = "Sookie...."
@@ -74,7 +78,7 @@ class scrooge:
         self.health = self.maxhealth
         self.attack = random.randint(50, 60)
         self.gold = random.randint(100, 150)
-        self.xp = 100
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(2, 10)
         self.chance = random.randint(2, 20)
         self.description = "He's rich!"
@@ -87,7 +91,7 @@ class hoyt:
         self.health = self.maxhealth
         self.attack = random.randint(1, 100)
         self.gold = random.randint(10, 100)
-        self.xp = 265
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 2)
         self.chance = random.randint(10, 20)
         self.description = "You leave my Hoyt alone, you devil whore!"
@@ -100,7 +104,7 @@ class zombie:
         self.health = self.maxhealth
         self.attack = random.randint(1, 10)
         self.gold = random.randint(1, 13)
-        self.xp = 10
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 3)
         self.chance = random.randint(10, 90)
         self.description = "Braaainnzzzz?!"
@@ -113,7 +117,7 @@ class werep:
         self.health = self.maxhealth
         self.attack = random.randint(5, 20)
         self.gold = random.randint(1, 10)
-        self.xp = 100
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 3)
         self.chance = random.randint(10, 30)
         self.description = "They're so pretty."
@@ -126,7 +130,7 @@ class waly:
         self.health = self.maxhealth
         self.attack = random.randint(5, 20)
         self.gold = random.randint(1, 10)
-        self.xp = 100
+        self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 3)
         self.chance = random.randint(10, 30)
         self.description = "mmmmm. cheekahn good."
@@ -139,8 +143,8 @@ class death:
         self.health = self.maxhealth
         self.attack = random.randint(50, 100)
         self.gold = random.randint(1000, 1987)
-        self.xp = 500
+        self.xp = random.randint(250, 500)
         self.armor = random.randint(3, 10)
-        self.chance = 0.001
+        self.chance = 0.1
         self.description = "Big Bad Bossman"
 DeathIG = death("Death")

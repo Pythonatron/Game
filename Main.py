@@ -11,6 +11,7 @@ from Villains import (
     VampireIG, WalyIG, WerepIG, ZombieIG
 )
 
+#if they can enter number of or description of all references they get special prize?
 #Enemies are way underpowered........
 #warrior can oneshot most....
 
@@ -53,7 +54,7 @@ class Weapon: #looks good
         print("Special Ability:   ",self.special)
         print("Durability:        ",self.durability)  
         
-class Player: #looks good
+class Player: #looks good.. #when did i add all this extra stuff!?
     def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0):
         self.name = name
         self.maxhealth = maxhealth
@@ -268,10 +269,11 @@ def prefight(): #looks good, probably finished till something ELSE gets implemen
 
 def fight(): #This could probably be prettier
     os.system('cls||clear')
-    print("%s             vs                %s\n" % (PlayerIG.name, enemy.name))
-    print("%s's Health: %d/%d                       %s's Health: %i/%i\n" % (PlayerIG.name, PlayerIG.health, PlayerIG.maxhealth, enemy.name, enemy.health, enemy.maxhealth))
-    print("Potions %i\n" % PlayerIG.pots)
-    print('----------------')
+    print("----------------------------------------------------------")
+    print("|{}             -vs-             {}".format(PlayerIG.name, enemy.name))
+    print("|Health: {}/{}                  Health: {}/{}".format(PlayerIG.health, PlayerIG.maxhealth, enemy.health, enemy.maxhealth))
+    print("|Potions {}                    {}".format(PlayerIG.pots, enemy.description))
+    print('---------------------------')
     print("Drink potion")
     print("Attack")
     print("Run")
@@ -459,9 +461,9 @@ def mbTitle(): #looks good
     print('#                                        Semi-Basic Text RPG                                      #') # pylint: disable=anomalous-backslash-in-string
     print('#                                 Basic Commands: Start, Load, Exit                               #') # pylint: disable=anomalous-backslash-in-string
     print('#                               Maybe some hidden commands.. Who knows?                           #') # pylint: disable=anomalous-backslash-in-string
-    print('#                                  No Peeking at the Code Either!                                 #') # pylint: disable=anomalous-backslash-in-string
-    print('#                                                                                                 #') # pylint: disable=anomalous-backslash-in-string
-    print('#                                    Press enter to continue                                      #')
+    print("#                               There's a total of 9 references in here                           #") # pylint: disable=anomalous-backslash-in-string
+    print('#                                      Can you find them all?                                     #') # pylint: disable=anomalous-backslash-in-string
+    print('#                                     Press enter to continue                                     #')
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
 def boot(): #Do i really need a start screen for the start screen?
@@ -469,10 +471,14 @@ def boot(): #Do i really need a start screen for the start screen?
     os.system('mode con: cols=101 lines=30')
     mTitle()
     mbTitle()
-    print_slow (text)
+    #print_slow (text) #disable for testing... its.. so... slow..
     print("")
     print("")
     input('')
     sTitle()
     main()
+def debugboot():
+    init()
+    setup1()
+    
 boot()
