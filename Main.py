@@ -384,8 +384,8 @@ def shop(): #needs fixed
     print("-----------------------------------")
     #
     #
-    #  List[Weapon - Price (mind - maxd)]
-    #
+    #  List[Weapon - Price (mind - maxd)] Mayhaps only show class specific weapons?!
+    #   I don't know how to do this anymore, I should just quit.
     #
     
     option = input("Choose a Weapon:")
@@ -397,9 +397,7 @@ def shop(): #needs fixed
     with open('WEAPONS.txt', 'r', encoding="utf8") as f:
                 for line in f:
                     parts = line.split(",")
-                    print("CM",capitalized_message)
-                    print("p0", parts[0])
-                    if 1 == 1:
+                        if 1 == 1:
                         weapon = Weapon()
                         weapon.weapon_details(capitalized_message)
                         highprice = int(weapon.highprice)
@@ -411,7 +409,7 @@ def shop(): #needs fixed
                             ld = int(weapon.lowdamage)
                             hd = int(weapon.highdamage)
                             idgaf2 = random.randint(ld,hd)
-                            print('Acquired %s!' % option) #Show damage increase?
+                            print('Acquired %s!' % option) 
                             print("Damage Difference roughly of: ",idgaf2 - prevdamage)
                             input('Press Enter to Continue')
                             shop()
