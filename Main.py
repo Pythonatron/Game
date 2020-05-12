@@ -15,6 +15,15 @@ from Villains import (
 #Enemies are way underpowered........
 #warrior can oneshot most....
 
+        
+def capital(text):
+    capitalized_message = " ".join([
+        word.capitalize()
+        for word in text.split(" ")
+    ])
+    return capitalized_message
+
+
 class Weapon: #looks good
     def __init__(self):
         self.Name = ""
@@ -30,17 +39,17 @@ class Weapon: #looks good
     def weapon_details(self,weaponID): #looks good
         with open('WEAPONS.txt', 'r', encoding="utf8") as f:
             for line in f:
-                parts = line.split(",")
-                if str(weaponID) == parts[0]:
-                    self.name = parts [0]
-                    self.lowprice = parts [1]
-                    self.highprice = parts [2]
-                    self.lowdamage = parts [3]
-                    self.highdamage = parts [4]
-                    self.weaponclass = parts [5]
-                    self.condition = parts [6]
-                    self.special = parts [7]
-                    self.durability = parts [8]
+                _parts = line.split(",")
+                if str(weaponID) == _parts[0]:
+                    self.name = _parts [0]
+                    self.lowprice = _parts [1]
+                    self.highprice = _parts [2]
+                    self.lowdamage = _parts [3]
+                    self.highdamage = _parts [4]
+                    self.weaponclass = _parts [5]
+                    self.condition = _parts [6]
+                    self.special = _parts [7]
+                    self.durability = _parts [8]
                     break
      
     def weapon_info(self): #looks good.. Will i ever really use this?
@@ -211,21 +220,22 @@ def equip(): #looks good?
     os.system('cls||clear')
     print("-------------------------------------")
     print("|  Type the weapon name to equip it |")
-    print("|       Type back to leave          |")
+    print("|    *==Type back to leave==*       |")
     print("| These are your available weapons  |")
     print("-------------------------------------")
     for weapon in PlayerIG.weapon:
         print(weapon)
     option = input('Choose Your Weapon:').lower()
-    if option.lower() == PlayerIG.currweapon:
+    
+    if capital(option) == PlayerIG.currweapon:
         print("You're currently already holding %s" % PlayerIG.currweapon)
         input('Press Enter to Continue')
         equip()
     elif option.lower() == "back":
         inventory()
-    elif option.lower() in PlayerIG.weapon:
+    elif capital(option) in PlayerIG.weapon:
         PlayerIG.currweapon = option.lower()
-        print("Changed weapon to %s" % PlayerIG.currweapon) #display attack increase?
+        print("Changed weapon to %s" % PlayerIG.currweapon)
         input("Press Enter").lower()
         equip()
     else:
@@ -263,7 +273,7 @@ def prefight(): #looks good, probably finished till something ELSE gets implemen
     elif results[0] == 11:
         enemy = DeathIG
     else:
-        enemy = SkeletonIG 
+        enemy = DeathIG 
     fight()
 
 
@@ -291,7 +301,7 @@ def fight(): #This could probably be prettier
 def attack(): #fix this
     os.system('cls||clear')
     PAttack = PlayerIG.attack #implement armor system. # shit, i removed the miss system...
-    EAttack = enemy.attack   #why isn't death listed?
+    EAttack = enemy.attack
     
     if PAttack == PlayerIG.attack / 2:
         os.system('cls||clear')
@@ -354,7 +364,6 @@ def run(): #looks good
             dead()
         else:
             fight()
-        
 
 def win(): #looks good
     os.system('cls||clear')
@@ -376,11 +385,11 @@ def shop(): #needs fixed
     os.system('cls||clear')
     print("-----------------------------------")
     print("|       Shhhawwwwp??!?!?          |")
-    print("|  Type the weapon name to buy it |")
+    print("| Type the weapon name to buy it  |")
     print("|       Type back to leave        |")
     print("|These are your available weapons |")
     print("|     Yeah I know it's ugly       |")
-    print("|     Aviailable Gold: %s         |" % PlayerIG.gold )
+    print("|     Aviailable Gold: ( %s )     |" % PlayerIG.gold )
     print("-----------------------------------")
     #
     #
@@ -396,8 +405,8 @@ def shop(): #needs fixed
     ])
     with open('WEAPONS.txt', 'r', encoding="utf8") as f:
                 for line in f:
-                    parts = line.split(",")
-                        if 1 == 1:
+                    _parts = line.split(",")
+                    if 1 == 1:
                         weapon = Weapon()
                         weapon.weapon_details(capitalized_message)
                         highprice = int(weapon.highprice)
@@ -464,19 +473,20 @@ def mbTitle(): #looks good
     print('#                                     Press enter to continue                                     #')
     print('###################################################################################################') # pylint: disable=anomalous-backslash-in-string
 
-def boot(): #Do i really need a start screen for the start screen?
+def boot(): #Do i really need a start screen for the start screen?   #YES
     init()
     os.system('mode con: cols=101 lines=30')
     mTitle()
     mbTitle()
-    #print_slow (text) #disable for testing... its.. so... slow..
+    print_slow (text)
     print("")
     print("")
     input('')
     sTitle()
     main()
+    
 def debugboot():
     init()
     setup1()
-    
-boot()
+
+debugboot()
