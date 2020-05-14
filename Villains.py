@@ -1,6 +1,7 @@
 import random
 
 #What's the point of xp?
+
 #xp based of of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
 #total defense (which isn't implemented) should be possibly a defense variable +/* armor +/* health
 #should xp incrase the player, weapon or armor or all three?
