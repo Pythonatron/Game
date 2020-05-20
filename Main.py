@@ -4,32 +4,20 @@ import random
 import sys
 from random import choices
 from time import sleep
+
 from colorama import init
 
 from Villains import (
-    DeathIG,
-    DiabetesIG,
-    GoblinIG,
-    HoytIG,
-    RickIG,
-    ScroogeIG,
-    SkeletonIG,
-    VampireIG,
-    WalyIG,
-    WerepIG,
-    ZombieIG,
-)
-
-# if they can enter number of or description of all references they get special prize?
-# Enemies are way underpowered........
+    DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
+    VampireIG, WalyIG, WerepIG, ZombieIG)
+'''------------------------------Main Program------------------------------'''
 
 
 def capital(text):
     capitalized_message = " ".join([word.capitalize() for word in text.split(" ")])
     return capitalized_message
 
-
-class Weapon:  # looks good
+class Weapon:
     def __init__(self):
         self.Name = ""
         self.lowprice = 0
@@ -41,7 +29,7 @@ class Weapon:  # looks good
         self.special = ""
         self.durability = 0
 
-    def weapon_details(self, weaponID):  # looks good
+    def weapon_details(self, weaponID):
         with open("WEAPONS.txt", "r", encoding="utf8") as f:
             for line in f:
                 _parts = line.split(",")
@@ -57,7 +45,7 @@ class Weapon:  # looks good
                     self.durability = _parts[8]
                     break
 
-    def weapon_info(self):  # looks good.. Will i ever really use this?
+    def weapon_info(self):
         print("\nName:            ", self.name)
         print("Low Price:         ", self.lowprice)
         print("High Price:        ", self.highprice)
@@ -69,7 +57,7 @@ class Weapon:  # looks good
         print("Durability:        ", self.durability)
 
 
-class Player:  # looks good.. #when did i add all this extra stuff!?
+class Player:
     def __init__(
         self,
         name,
@@ -100,7 +88,7 @@ class Player:  # looks good.. #when did i add all this extra stuff!?
         self.gold = gold
 
     @property
-    def attack(self):  # looks good
+    def attack(self):
         attack = self.base_attack
         weapon = Weapon()
         weapon.weapon_details(str(self.currweapon).capitalize())
@@ -111,8 +99,7 @@ class Player:  # looks good.. #when did i add all this extra stuff!?
             attack += idgaf
         return attack
 
-
-def savel():  # looks good
+def savel():
     if os.path.exists("savefile") == True:
         answer = "Saved Game Found"
         print("\033[12;38f", answer)
@@ -122,8 +109,7 @@ def savel():  # looks good
         print("\033[12;34f", answer)
         print("")
 
-
-def main():  # looks good
+def main():
     os.system("cls||clear")
     mTitle()
     sTitle()
@@ -150,7 +136,7 @@ def main():  # looks good
         main()
 
 
-def setup1():  # Should i make pretty borders for these functions as well?
+def setup1():
     global PlayerIG
     os.system("cls||clear")
     print("Please choose something for your name..")
@@ -159,105 +145,27 @@ def setup1():  # Should i make pretty borders for these functions as well?
     setup2()
 
 
-def setup2():  # looks good #Do I need multiple globals of the same thing?
+def setup2():
     global PlayerIG
     print("Choose from Ranger, Mage, Warrior, Priest, Rogue")
     choice = input("Class-> ").lower()
     if choice == "warrior":
-        PlayerIG = Player(
-            PlayerIG.name,
-            120,
-            10,
-            0,
-            2,
-            0,
-            "Warrior",
-            0,
-            ["Fists"],
-            ["Fists"],
-            "Brutal.",
-            10,
-        )
+        PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['Fists'],['Fists'],"Brutal.",10)
         start1()
     elif choice == "mage":
-        PlayerIG = Player(
-            PlayerIG.name,
-            70,
-            4,
-            2,
-            5,
-            10,
-            "Mage",
-            0,
-            ["Old Staff"],
-            ["Old Staff"],
-            "You're a Wizard Harry.",
-            15,
-        )
+        PlayerIG = Player(PlayerIG.name,70,4,2,5,10,"Mage",0,['Old Staff'],['Old Staff'],"You're a Wizard Harry.",15) 
         start1()
     elif choice == "ranger":
-        PlayerIG = Player(
-            PlayerIG.name,
-            80,
-            8,
-            1,
-            2,
-            0,
-            "Ranger",
-            0,
-            ["Warn Bow"],
-            ["Warn Bow"],
-            "Not Your Average Walker Texas Ranger.",
-            10,
-        )
+        PlayerIG = Player(PlayerIG.name,80,8,1,2,0,"Ranger",0,['Battle-Worn Bow'],['Battle-Worn Bow'],"Not Your Average Walker Texas Ranger.",10) 
         start1()
     elif choice == "priest":
-        PlayerIG = Player(
-            PlayerIG.name,
-            50,
-            5,
-            5,
-            7,
-            4,
-            "Priest",
-            0,
-            ["Old Staff"],
-            ["Old Staff"],
-            "Praise be to Yevon.",
-            5,
-        )
+        PlayerIG = Player(PlayerIG.name,50,5,5,7,4,"Priest",0,['Old Staff'],['Old Staff'],"Praise be to Yevon.",5) 
         start1()
     elif choice == "rogue":
-        PlayerIG = Player(
-            PlayerIG.name,
-            70,
-            7,
-            1,
-            1,
-            0,
-            "Rogue",
-            0,
-            ["Rusty Dagger"],
-            ["Rusty Dagger"],
-            "A cloud of smoke and he appears. The master of suprise!",
-            40,
-        )
+        PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['Rusty Dagger'],['Rusty Dagger'],"A cloud of smoke and he appears. The master of suprise!",40) 
         start1()
     elif choice == "god":
-        PlayerIG = Player(
-            PlayerIG.name,
-            100,
-            100,
-            100,
-            100,
-            100,
-            "Admin",
-            100,
-            ["Admin"],
-            ["Admin"],
-            "",
-            1000,
-        )
+        PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['Admin'],['Admin'],"",1000) 
         start1()
     else:
         os.system("cls||clear")
@@ -265,7 +173,7 @@ def setup2():  # looks good #Do I need multiple globals of the same thing?
         setup2()
 
 
-def start1():  # Finished for now!
+def start1():
     os.system("cls||clear")
     print("----------------------------------------------")
     print("| Welcome %s" % PlayerIG.name)
@@ -303,7 +211,7 @@ def start1():  # Finished for now!
         start1()
 
 
-def inventory():  # looks good
+def inventory():
     os.system("cls||clear")
     print("-------------------------------------")
     print("|     Unneeded Inventory Screen     |")
@@ -320,7 +228,7 @@ def inventory():  # looks good
         start1()
 
 
-def equip():  # looks good?
+def equip():
     os.system("cls||clear")
     print("-------------------------------------")
     print("|  Type the weapon name to equip it |")
@@ -346,7 +254,7 @@ def equip():  # looks good?
         print("ERROR SHOP")
 
 
-def prefight():  # looks good, probably finished till something ELSE gets implemented
+def prefight():
     population = 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11
     weights = (
         SkeletonIG.chance,
@@ -390,7 +298,7 @@ def prefight():  # looks good, probably finished till something ELSE gets implem
     fight()
 
 
-def fight():  # This could probably be prettier
+def fight():
     os.system("cls||clear")
     print("----------------------------------------------------------")
     print("|{}             -vs-             {}".format(PlayerIG.name, enemy.name))
@@ -448,7 +356,7 @@ def attack():  # fix this
         fight()
 
 
-def drinkpot():  # looks good
+def drinkpot():
     os.system("cls||clear")
     if PlayerIG.pots == 0:
         print("You currently have no potions.")
@@ -463,7 +371,7 @@ def drinkpot():  # looks good
     fight()
 
 
-def run():  # looks good
+def run():
     os.system("cls||clear")
     runnum = random.randint(1, 3)
     if runnum == 1:
@@ -487,7 +395,7 @@ def run():  # looks good
             fight()
 
 
-def win():  # looks good
+def win():
     os.system("cls||clear")
     enemy.health = enemy.maxhealth
     PlayerIG.gold += enemy.gold
@@ -497,65 +405,69 @@ def win():  # looks good
     start1()
 
 
-def dead():  # looks good
+def dead():
     os.system("cls||clear")
     print("You've died.")
     input("Press enter to continue")
     boot()
 
+def stringcheck(file,string):
+    with open(file, 'r') as read:
+        for line in read:
+            if string in line:
+                return True
+    return False
 
-def shop():  # needs fixed
+
+def shop():
     os.system("cls||clear")
-    print("-----------------------------------")
-    print("|       Shhhawwwwp??!?!?          |")
-    print("| Type the weapon name to buy it  |")
-    print("|       Type back to leave        |")
-    print("|These are your available weapons |")
-    print("|     Yeah I know it's ugly       |")
-    print("|     Aviailable Gold: ( %s )     |" % PlayerIG.gold)
-    print("-----------------------------------")
-    #
+    print("-------------------------------------")
+    print("|        Shhhawwwwp??!?!?           |")
+    print("|  Type the weapon name to buy it   |")
+    print("|        Type back to leave         |")
+    print("| These are your available weapons  |")
+    print("|      Yeah I know it's ugly        |")
+    print("|      Aviailable Gold: ( %s )      |" % PlayerIG.gold)
+    print("-------------------------------------")
+    
     #
     #  List[Weapon - Price (mind - maxd)] Mayhaps only show class specific weapons?!
     #   I don't know how to do this anymore, I should just quit.
     #
-
-    option = input("Choose a Weapon:")
     prevdamage = PlayerIG.attack
-    capitalized_message = " ".join([word.capitalize() for word in option.split(" ")])
-    with open("WEAPONS.txt", "r", encoding="utf8") as f:
-        for line in f:
-            _parts = line.split(",")
-            if 1 == 1:
-                weapon = Weapon()
-                weapon.weapon_details(capitalized_message)
-                highprice = int(weapon.highprice)
-                lowprice = int(weapon.lowprice)
-                idgaf = random.randint(lowprice, highprice)
-                if PlayerIG.gold >= idgaf:
-                    PlayerIG.gold -= idgaf
-                    PlayerIG.weapon.append(capitalized_message)
-                    ld = int(weapon.lowdamage)
-                    hd = int(weapon.highdamage)
-                    idgaf2 = random.randint(ld, hd)
-                    print("Acquired %s!" % option)
-                    print("Damage Difference roughly of: ", idgaf2 - prevdamage)
-                    input("Press Enter to Continue")
-                    shop()
-                else:
-                    print("You do not have enough gold.")
-                    print("Available Gold =", PlayerIG.gold)
-                    input("Press Enter to Continue")
-                    shop()
-            elif option.lower() == "back":
-                start1()
-            else:
-                print("Something went wrong.")
+    option = input("-> ").lower()
+    if option.lower() == "back":
+        start1()
+    elif option.lower() == "exit":
+        sys.exit()
+    else:
+        if stringcheck('WEAPONS.txt',capital(option)):
+            weapon = Weapon()
+            weapon.weapon_details(capital(option))
+            highprice, lowprice = int(weapon.highprice), int(weapon.lowprice)
+            price = random.randint(lowprice, highprice)
+            if PlayerIG.gold >= price:
+                PlayerIG.gold -= price
+                PlayerIG.weapon.append(capital(option))
+                ld, hd = int(weapon.lowdamage), int(weapon.highdamage)
+                damage = random.randint(ld, hd)
+                print("Acquired %s!" % option)
+                print("Damage Difference roughly of: ", damage - prevdamage)
+                print("You now have %i Gold!" % PlayerIG.gold)
                 input("Press Enter to Continue")
                 shop()
+            else:
+                print("You do not have enough gold.")
+                print("Available Gold =", PlayerIG.gold)
+                input("Press Enter to Continue")
+                shop()
+        else:
+            print("Something went wrong.")
+            input("Press Enter to Continue")
+            shop()
 
 
-def print_slow(text):  # looks good
+def print_slow(text):
     print("\033[15;32f", end=" ")
     for x in text:
         print(x, end="", flush=True)
@@ -566,82 +478,81 @@ def print_slow(text):  # looks good
 text = " E..n..j..o..y.... mwahahahahaha....?"
 
 
-def mTitle():  # looks good
+def mTitle():
     print(
         "###################################################################################################"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )  
     print(
         "# ______  ______   ______       ______  __  __   ______       __       __  __   __       ______   #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    ) # pylint: disable=anomalous-backslash-in-string 
     print(
         "#/\  ___\/\  __ \ /\  == \     /\__  _\/\ \_\ \ /\  ___\     /\ \     /\ \/\ \ /\ \     /\___  \  #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    ) # pylint: disable=anomalous-backslash-in-string
     print(
         "#\ \  __\\\ \ \/\ \\\ \  __<     \/_/\ \/\ \  __ \\\ \  __\     \ \ \____\ \ \_\ \\\ \ \____\/_/  /__ #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    ) # pylint: disable=anomalous-backslash-in-string
     print(
         "# \ \_\   \ \_____\\\ \_\ \_\      \ \_\ \ \_\ \_\\\ \_____\    \ \_____\\\ \_____\\\ \_____\ /\_____\#"
-    )  # pylint: disable=anomalous-backslash-in-string
+    ) # pylint: disable=anomalous-backslash-in-string
     print(
         "#  \/_/    \/_____/ \/_/ /_/       \/_/  \/_/\/_/ \/_____/     \/_____/ \/_____/ \/_____/ \/_____/#"
-    )  # pylint: disable=anomalous-backslash-in-string
+    ) # pylint: disable=anomalous-backslash-in-string
     print(
         "#                                                                                                 #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )  
     print(
         "###################################################################################################"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
 
-
-def sTitle():  # looks good
+def sTitle():
     print(
         "#                                       Welcome!                                                  #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#           Start                                                    Load                         #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#           Exit                                                     Help                         #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                                                                                 #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "###################################################################################################"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
 
 
-def mbTitle():  # looks good
+def mbTitle():
     print(
         "#                           Welcome to Pythonatron's Python Game: For The Lulz                    #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                        Semi-Basic Text RPG                                      #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                 Basic Commands: Start, Load, Exit                               #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
-        "#                               Maybe some hidden commands.. Who knows?                           #"
-    )  # pylint: disable=anomalous-backslash-in-string
+        "#                                   --Insert witty  comments here-                                #"
+    )
     print(
         "#                               There's a total of 9 references in here                           #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                      Can you find them all?                                     #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                                                                                 #"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
     print(
         "#                                     Press enter to continue                                     #"
     )
     print(
         "###################################################################################################"
-    )  # pylint: disable=anomalous-backslash-in-string
+    )
 
 
-def boot():  # Do i really need a start screen for the start screen?   #YES
+def boot():
     init()
     os.system("mode con: cols=101 lines=30")
     mTitle()
