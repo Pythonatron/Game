@@ -10,8 +10,15 @@ from colorama import init
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
-'''------------------------------Main Program------------------------------'''
 
+#armor system
+#durability system
+#special powers system
+#condition system
+#is weaponclass implemented already?
+#magic defense and attack system
+#miss system
+#weapon listing at shop
 
 def capital(text):
     capitalized_message = " ".join([word.capitalize() for word in text.split(" ")])
@@ -45,16 +52,6 @@ class Weapon:
                     self.durability = _parts[8]
                     break
 
-    def weapon_info(self):
-        print("\nName:            ", self.name)
-        print("Low Price:         ", self.lowprice)
-        print("High Price:        ", self.highprice)
-        print("\nLow Damage:        ", self.lowdamage)
-        print("High Damage:       ", self.highdamage)
-        print("Weapon Class:      ", self.weaponclass)
-        print("Condition:         ", self.condition)
-        print("Special Ability:   ", self.special)
-        print("Durability:        ", self.durability)
 
 
 class Player:
@@ -135,7 +132,6 @@ def main():
     else:
         main()
 
-
 def setup1():
     global PlayerIG
     os.system("cls||clear")
@@ -209,24 +205,57 @@ def start1():
         inventory()
     else:
         start1()
-
-
+    
 def inventory():
-    os.system("cls||clear")
-    print("-------------------------------------")
-    print("|     Unneeded Inventory Screen     |")
-    print("|          Equip or Back            |")
-    print("|         (Yeop, That's it)         |")
-    print("-------------------------------------")
-
+    def printmenu():
+        os.system("cls||clear")
+        print("-------------------------------------")
+        print("|     Unneeded Inventory Screen     |")
+        print("|          Equip or Back            |")
+        print("|         (Yeop, That's it)         |")
+        print("|   now with weapon list and info   |")
+        print("-------------------------------------")
+    printmenu()
     option = input("-> ").lower()
-    if option.lower() == "equip":
-        equip()
+    if option.lower() == "info":
+        printmenu()
+        print("|Enter a weapon for more information|")
+        print("-------------------------------------")
+        for weapon in PlayerIG.weapon:
+            print(weapon)
+        option = input("-> ").lower()
+        if capital(option) in PlayerIG.weapon:
+            weapon = Weapon()
+            weapon.weapon_details(capital(option))
+            variable = capital(option)
+            print("\nName:              %s" % weapon.name)
+            print("Low Price:         %s" % weapon.lowprice)
+            print("High Price:        %s" % weapon.highprice)
+            print("Low Damage:       %s" % weapon.lowdamage)
+            print("High Damage:       %s" % weapon.highdamage)
+            print("Weapon Class:      %s" % weapon.weaponclass)
+            print("Condition:         %s" % weapon.condition)
+            print("Special Ability:   %s" % weapon.special)
+            print("Durability:        %s" % weapon.durability)
+            option = input("-> ").lower()
+            if option.lower() == "back":
+                inventory()
+            if option.lower() == "equip":
+                PlayerIG.currweapon = variable
+                print("Changed weapon to %s" % PlayerIG.currweapon)
+                input("Press Enter")
+            else:
+                inventory()
+        else:
+            print("You do not own that item")
+            input("Press Enter")
+            inventory()
+    elif option.lower() == "equip":
+            equip()
     elif option.lower() == "back":
         start1()
     else:
         start1()
-
 
 def equip():
     os.system("cls||clear")
@@ -248,7 +277,7 @@ def equip():
     elif capital(option) in PlayerIG.weapon:
         PlayerIG.currweapon = option.lower()
         print("Changed weapon to %s" % PlayerIG.currweapon)
-        input("Press Enter").lower()
+        input("Press Enter")
         equip()
     else:
         print("ERROR SHOP")
@@ -570,5 +599,5 @@ def debugboot():
     setup1()
 
 
-#debugboot()
-boot()
+debugboot()
+#boot()

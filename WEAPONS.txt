@@ -27,3 +27,4 @@ Purple Bo Staff,10,80,1,8,anyusr,junk,none,100
 Orange Nunchaku,10,80,1,8,anyusr,junk,none,100
 Zeus Lightning,5000,10000,5000,10000,anyusr,epic,none,250
 Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,1000000
+Biggest Blackest Dildo,300,500,10,15,,anyusr,rare,internalbleeding,69
