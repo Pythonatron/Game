@@ -1,10 +1,9 @@
 
-testingarea4.py
-testingarea3.py
-Testingarea.py
-testinarea2.py
-POFS.py
-notes.py
 .vscode/settings.json
+*.pyc
+notes.py
+printtesting.py
 Secrets.py
+Testingarea.py
 Main.py.bak
+__pycache__/Villains.cpython-38.pyc

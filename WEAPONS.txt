@@ -1,30 +1,45 @@
-Name,Low price, High price, Low damage, High damage, Weapon class, Condition, Special, Durability
-fists,0,0,1,3,warrior,junk,none,-1
-Mace,10,80,1,8,warrior,junk,none,100
-Lance,10,80,1,8,warrior,junk,none,100
-Spear,10,80,1,8,warrior,junk,none,100
-Halberd,10,80,1,8,warrior,junk,none,100
-Cutlass,10,80,1,8,warrior,junk,none,100
-LongSword,10,80,1,8,warrior,junk,none,100
-War Hammer,10,80,1,8,warrior,junk,none,100
-GreatSword,10,80,1,8,warrior,junk,none,100
-Battle Axe,10,80,1,8,warrior,junk,none,100
-Morning Star,10,80,1,8,warrior,junk,none,100
-Brass Knuckles,10,80,1,8,warrior,junk,none,100
-Old Staff,0,0,1,3,mpusr,junk,none,100
-Small Dagger,0,0,1,3,rogue,junk,none,100
-Dagger,10,80,1,8,rogue,junk,none,100
-Battle-Worn Bow,0,0,1,3,ranger,junk,none,100
-Bow,10,80,1,8,ranger,junk,none,100
-Crossbow,10,80,1,8,ranger,junk,none,100
-Long Bow,10,80,1,8,ranger,junk,none,100
-Short Bow,10,80,1,8,ranger,junk,none,100
-Slice Of Pizza,3,3,0,0,anyusr,junk,none,100
-Red Sai,10,80,1,8,anyusr,junk,none,100
-Blue Sword,10,80,1,8,anyusr,junk,none,100
-Pepper Spray,10,80,1,1,anyusr,junk,none,100 
-Purple Bo Staff,10,80,1,8,anyusr,junk,none,100
-Orange Nunchaku,10,80,1,8,anyusr,junk,none,100
-Zeus Lightning,5000,10000,5000,10000,anyusr,epic,none,250
-Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,1000000
-Biggest Blackest Dildo,300,500,10,15,,anyusr,rare,internalbleeding,69
+Name, Price, Base Damage, Usage Class?, Condition, Special, Durability
+Warrior Weapons:
+    Fists,0,5,warrior,poor,none,infinite
+    Brass Knuckles,680,15,warrior,poor,none,100
+    Studded Gauntlets,950,30,warrior,poor,none,200
+    Spear,200,7,warrior,poor,none,50
+    Lance,500,10,warrior,poor,none,100
+    Halberd,800,25,warrior,poor,none,200
+    Cutlass,300,9,warrior,poor,none,50
+    LongSword,600,12,warrior,poor,none,100
+    GreatSword,900,28,warrior,poor,none,200
+    War axe,632,12,warrior,poor,none,50
+    Battle Axe,650,15,warrior,poor,none,100
+    Horseman's Axe,1000,30,warrior,poor,none,200
+    Morning Star,200,8,warrior,poor,none,50
+    Mace,400,12,warrior,poor,none,100
+    Flail,800,25,warrior,poor,none,200
+    ----insert epic and expensive item here---
+
+Magic User Weapons:
+    Branch,0,5,mpuser,poor,none,infinite
+
+Rogue Weapons:
+    Small Dagger,0,0,1,3,rogue,junk,none,100
+    Dagger,10,80,1,8,rogue,junk,none,100
+
+Ranger Weapons:
+    Battle-Worn Bow,0,0,1,3,ranger,junk,none,100
+    Bow,10,80,1,8,ranger,junk,none,100
+    Crossbow,10,80,1,8,ranger,junk,none,100
+    Long Bow,10,80,1,8,ranger,junk,none,100
+    Short Bow,10,80,1,8,ranger,junk,none,100
+
+Any User:
+    Slice Of Pizza,3,3,0,0,anyusr,junk,none,100
+    Red Sai,10,80,1,8,anyusr,junk,none,100
+    Blue Sword,10,80,1,8,anyusr,junk,none,100
+    Pepper Spray,10,80,1,1,anyusr,junk,none,100 
+    Purple Bo Staff,10,80,1,8,anyusr,junk,none,100
+    Orange Nunchaku,10,80,1,8,anyusr,junk,none,100
+    Zeus Lightning,5000,10000,5000,10000,anyusr,epic,none,infinite
+    Biggest Blackest Dildo,300,500,10,15,,anyusr,rare,internalbleeding,69
+
+Admin Only:
+    Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite

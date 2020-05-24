@@ -1,11 +1,5 @@
+#/* cSpell:disable */
 import random
-
-#What's the point of xp?
-
-#xp based of of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
-#total defense (which isn't implemented) should be possibly a defense variable +/* armor +/* health
-#should xp incrase the player, weapon or armor or all three?
-#im sure there's a better way to do this as well.. maybe Class Monster ->Skeleton, etc?
 
 class skeleton:
     def __init__(self, name):
@@ -91,7 +85,7 @@ class hoyt:
         self.maxhealth = random.randint(5, 15)
         self.health = self.maxhealth
         self.attack = random.randint(1, 100)
-        self.gold = random.randint(10, 100)
+        self.gold = random.randint(10, 20)
         self.xp = random.randint(50, 200)
         self.armor = random.randint(0, 2)
         self.chance = random.randint(10, 20)
