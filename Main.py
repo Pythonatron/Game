@@ -20,7 +20,7 @@ from Villains import (
 #miss system
 #weapon listing at shop
 #What's the point of xp?
-#xp based of of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
+#xp based off of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
 #total defense (which isn't implemented) should be possibly a defense variable +/* armor +/* health
 #should xp incrase the player, weapon or armor or all three?
 #im sure there's a better way to do this as well.. maybe Class Monster ->Skeleton, etc?

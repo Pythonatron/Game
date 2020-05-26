@@ -1,4 +1,9 @@
+#Condition = condition of the weapon, can be upgraded (xp/gold/both, unknown)
+#Special = special 'power' weapon can use that applies during combat
+#Durability = durability of the weapon (essentially number of uses till the weapon breaks) maybe increased with condition
+
 Name, Price, Base Damage, Usage Class?, Condition, Special, Durability
+
 Warrior Weapons:
     Fists,0,5,warrior,poor,none,infinite
     Brass Knuckles,680,15,warrior,poor,none,100
@@ -15,31 +20,79 @@ Warrior Weapons:
     Morning Star,200,8,warrior,poor,none,50
     Mace,400,12,warrior,poor,none,100
     Flail,800,25,warrior,poor,none,200
-    ----insert epic and expensive item here---
 
-Magic User Weapons:
-    Branch,0,5,mpuser,poor,none,infinite
+Magic User Weapons: (wands, staves, 'sticks', maybe daggers?, scepter)
+    Stick,0,5,warrior,poor,none,infinite
+    Pretty Stick,680,15,warrior,poor,none,100
+    Wand,950,30,warrior,poor,none,200
+    
+    Branch,200,7,warrior,poor,none,50
+    Walking Stick,500,10,warrior,poor,none,100
+    Staff,800,25,warrior,poor,none,200
+    
+    Hardwood Wand,300,9,warrior,poor,none,50
+    Glittered Wand,600,12,warrior,poor,none,100
+    Scepter,900,28,warrior,poor,none,200
+    
+    Dagger,632,12,warrior,poor,none,50
+    Daqtagh knife,650,15,warrior,poor,none,100
+    Yew & Phoenix Feather Wand,1000,30,warrior,poor,none,200
+    
+    ,200,8,warrior,poor,none,50
+    ,400,12,warrior,poor,none,100
+    ,800,25,warrior,poor,none,200
 
 Rogue Weapons:
-    Small Dagger,0,0,1,3,rogue,junk,none,100
-    Dagger,10,80,1,8,rogue,junk,none,100
+    Rusty Dagger,0,5,warrior,poor,none,infinite
+    Dagger,680,15,warrior,poor,none,100
+    Strong Dagger,950,30,warrior,poor,none,200
+    
+    ,200,7,warrior,poor,none,50
+    ,500,10,warrior,poor,none,100
+    ,800,25,warrior,poor,none,200
+    
+    ,300,9,warrior,poor,none,50
+    ,600,12,warrior,poor,none,100
+    ,900,28,warrior,poor,none,200
+    
+    ,632,12,warrior,poor,none,50
+    ,650,15,warrior,poor,none,100
+    ,1000,30,warrior,poor,none,200
+    
+    ,200,8,warrior,poor,none,50
+    ,400,12,warrior,poor,none,100
+    ,800,25,warrior,poor,none,200
 
 Ranger Weapons:
-    Battle-Worn Bow,0,0,1,3,ranger,junk,none,100
-    Bow,10,80,1,8,ranger,junk,none,100
-    Crossbow,10,80,1,8,ranger,junk,none,100
-    Long Bow,10,80,1,8,ranger,junk,none,100
-    Short Bow,10,80,1,8,ranger,junk,none,100
+    Battle-worn Bow,0,5,warrior,poor,none,infinite
+    Short Bow,680,15,warrior,poor,none,100
+    Bow,950,30,warrior,poor,none,200
+    
+    Crossbow,200,7,warrior,poor,none,50
+    Long Bow,500,10,warrior,poor,none,100
+    ,800,25,warrior,poor,none,200
+    
+    ,300,9,warrior,poor,none,50
+    ,600,12,warrior,poor,none,100
+    ,900,28,warrior,poor,none,200
+    
+    ,632,12,warrior,poor,none,50
+    ,650,15,warrior,poor,none,100
+    ,1000,30,warrior,poor,none,200
+    
+    ,200,8,warrior,poor,none,50
+    ,400,12,warrior,poor,none,100
+    ,800,25,warrior,poor,none,200
 
 Any User:
-    Slice Of Pizza,3,3,0,0,anyusr,junk,none,100
-    Red Sai,10,80,1,8,anyusr,junk,none,100
-    Blue Sword,10,80,1,8,anyusr,junk,none,100
-    Pepper Spray,10,80,1,1,anyusr,junk,none,100 
-    Purple Bo Staff,10,80,1,8,anyusr,junk,none,100
-    Orange Nunchaku,10,80,1,8,anyusr,junk,none,100
-    Zeus Lightning,5000,10000,5000,10000,anyusr,epic,none,infinite
-    Biggest Blackest Dildo,300,500,10,15,,anyusr,rare,internalbleeding,69
+    Slice Of Pizza
+    Red Sai
+    Blue Sword
+    Pepper Spray 
+    Purple Bo Staff
+    Orange Nunchucks
+    Zeus Lightning
+    Biggest Blackest Dildo = internalbleeding
 
 Admin Only:
     Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
