@@ -11,6 +11,9 @@ from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
 
+#Condition = condition of the weapon, can be upgraded (xp/gold/both, unknown)
+#Special = special 'power' weapon can use that applies during combat
+#Durability = durability of the weapon (essentially number of uses till the weapon breaks) maybe increased with condition
 #armor system
 #durability system
 #special powers system
@@ -31,15 +34,16 @@ def capital(text):
 
 class Weapon:
     def __init__(self):
-        self.Name = ""
-        self.lowprice = 0
-        self.highprice = 0
-        self.lowdamage = 0
-        self.highdamage = 0
+        self.name = ""
+        self.price = 0
+        self.damage = 0
         self.weaponclass = ""
         self.condition = ""
         self.special = ""
         self.durability = 0
+
+# 0      1         2             3          4          5        6
+#Name, Price, Base Damage, Usage Class?, Condition, Special, Durability
 
     def weapon_details(self, weaponID):
         with open("WEAPONS.txt", "r", encoding="utf8") as f:
@@ -47,34 +51,18 @@ class Weapon:
                 _parts = line.split(",")
                 if str(weaponID) == _parts[0]:
                     self.name = _parts[0]
-                    self.lowprice = _parts[1]
-                    self.highprice = _parts[2]
-                    self.lowdamage = _parts[3]
-                    self.highdamage = _parts[4]
-                    self.weaponclass = _parts[5]
-                    self.condition = _parts[6]
-                    self.special = _parts[7]
-                    self.durability = _parts[8]
+                    self.price = _parts[1]
+                    self.damage = _parts[2]
+                    self.weaponclass = _parts[3]
+                    self.condition = _parts[4]
+                    self.special = _parts[5]
+                    self.durability = _parts[6]
                     break
 
 
 
 class Player:
-    def __init__(
-        self,
-        name,
-        maxhealth,
-        base_attack,
-        pots,
-        magicdefense,
-        magicattack,
-        classn,
-        armor,
-        weapon,
-        currweapon,
-        description,
-        gold=0,
-    ):
+    def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0 ):
         self.name = name
         self.maxhealth = maxhealth
         self.health = self.maxhealth
@@ -95,10 +83,7 @@ class Player:
         weapon = Weapon()
         weapon.weapon_details(str(self.currweapon).capitalize())
         if PlayerIG.currweapon == self.currweapon:
-            highdamage = int(weapon.highdamage)
-            lowdamage = int(weapon.lowdamage)
-            idgaf = random.randint(lowdamage, highdamage)
-            attack += idgaf
+            attack += weapon.damage
         return attack
 
 def savel():
@@ -154,13 +139,13 @@ def setup2():
         PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['Fists'],['Fists'],"Brutal.",10)
         start1()
     elif choice == "mage":
-        PlayerIG = Player(PlayerIG.name,70,4,2,5,10,"Mage",0,['Old Staff'],['Old Staff'],"You're a Wizard Harry.",15) 
+        PlayerIG = Player(PlayerIG.name,70,4,2,5,10,"Mage",0,['Stick'],['Stick'],"You're a Wizard Harry.",15) 
         start1()
     elif choice == "ranger":
-        PlayerIG = Player(PlayerIG.name,80,8,1,2,0,"Ranger",0,['Battle-Worn Bow'],['Battle-Worn Bow'],"Not Your Average Walker Texas Ranger.",10) 
+        PlayerIG = Player(PlayerIG.name,80,8,1,2,0,"Ranger",0,['Battle-worn Bow'],['Battle-worn Bow'],"Not Your Average Walker Texas Ranger.",10) 
         start1()
     elif choice == "priest":
-        PlayerIG = Player(PlayerIG.name,50,5,5,7,4,"Priest",0,['Old Staff'],['Old Staff'],"Praise be to Yevon.",5) 
+        PlayerIG = Player(PlayerIG.name,50,5,5,7,4,"Priest",0,['Stick'],['Stick'],"Praise be to Yevon.",5) 
         start1()
     elif choice == "rogue":
         PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['Rusty Dagger'],['Rusty Dagger'],"A cloud of smoke and he appears. The master of suprise!",40) 
@@ -181,10 +166,7 @@ def start1():
     print("| Class: %s" % PlayerIG.classn)
     print("|\t", PlayerIG.description)
     print("| Health: %i/%i" % (PlayerIG.health, PlayerIG.maxhealth))
-    print(
-        "| Current Weapon: %s"
-        % str(PlayerIG.currweapon).replace("[", "").replace("]", "").replace("'", "")
-    )
+    print("| Current Weapon: %s" % str(PlayerIG.currweapon).replace("[", "").replace("]", "").replace("'", ""))
     print("|\t\t    (%i damage)" % PlayerIG.attack)
     print("| Potions: %i      Gold: %i" % (PlayerIG.pots, PlayerIG.gold))
     print("----------------------------------------------")
@@ -214,18 +196,25 @@ def start1():
 def inventory():
     def printmenu():
         os.system("cls||clear")
-        print("-------------------------------------")
-        print("|     Unneeded Inventory Screen     |")
-        print("|          Equip or Back            |")
-        print("|         (Yeop, That's it)         |")
-        print("|   now with weapon list and info   |")
-        print("-------------------------------------")
+        print("--------------------------------------")
+        print("|             Inventory              |")
+        print("|        Info, Equip or Back         |")
+        print("--------------------------------------")
     printmenu()
+    print("| Potions: %i      Gold: %i" % (PlayerIG.pots, PlayerIG.gold))
+    print("| Current Weapon: %s" % str(PlayerIG.currweapon).replace("[", "").replace("]", "").replace("'", ""))
+    print("--------------------------------------")
+    print("|      All Weapons in Inventory      |")
+    print("--------------------------------------")
+    for weapon in PlayerIG.weapon:
+        print("|",weapon)
     option = input("-> ").lower()
+    
     if option.lower() == "info":
         printmenu()
         print("|Enter a weapon for more information|")
         print("-------------------------------------")
+
         for weapon in PlayerIG.weapon:
             print(weapon)
         option = input("-> ").lower()
@@ -234,14 +223,12 @@ def inventory():
             weapon.weapon_details(capital(option))
             variable = capital(option)
             print("\nName:              %s" % weapon.name)
-            print("Low Price:         %s" % weapon.lowprice)
-            print("High Price:        %s" % weapon.highprice)
-            print("Low Damage:       %s" % weapon.lowdamage)
-            print("High Damage:       %s" % weapon.highdamage)
-            print("Weapon Class:      %s" % weapon.weaponclass)
-            print("Condition:         %s" % weapon.condition)
-            print("Special Ability:   %s" % weapon.special)
-            print("Durability:        %s" % weapon.durability)
+            print("Price:               %s" % weapon.price)
+            print("Damage:              %s" % weapon.damage)
+            print("Weapon Class:        %s" % weapon.weaponclass)
+            print("Condition:           %s" % weapon.condition)
+            print("Special Ability:     %s" % weapon.special)
+            print("Durability:          %s" % weapon.durability)
             option = input("-> ").lower()
             if option.lower() == "back":
                 inventory()
@@ -260,6 +247,8 @@ def inventory():
     elif option.lower() == "back":
         start1()
     else:
+        print("Unknown command, try again")
+        input("Press Enter to Continue")
         start1()
 
 def equip():
@@ -465,9 +454,38 @@ def shop():
     print("-------------------------------------")
     
     #
-    #  List[Weapon - Price (mind - maxd)] Mayhaps only show class specific weapons?!
-    #   I don't know how to do this anymore, I should just quit.
-    #
+    #  List[Weapon - Price - Damage] Only show class specific weapons
+    #   I don't know how to do this
+    #weapon.weapon_details(x).capitalize())
+    
+    #     for weapon in PlayerIG.weapon:
+    #         print(weapon)
+    #     option = input("-> ").lower()
+    #     if capital(option) in PlayerIG.weapon:
+    #         weapon = Weapon()
+    #         weapon.weapon_details(capital(option))
+    #         variable = capital(option)
+            
+            
+    # weapon = Weapon()
+    # print(weapon,"here")
+    # if PlayerIG.classn == "Warrior":
+    #     print("class",PlayerIG.classn)
+    #     for weapons in weapon.weapon_details:
+    #         #weapon.weapon_details(x).capitalize()
+    #         #if weapon.weaponclass == warrior:
+    #             print(x)
+    # if PlayerIG.classn == "Mage":
+    #     Mageweapons()
+    # if PlayerIG.classn == "Ranger":
+    #     Rangerweapons()
+    # if PlayerIG.classn == "Priest":
+    #     Priestweapons()
+    # if PlayerIG.classn == "Rogue":
+    #     Rogueweapons()
+    # if PlayerIG.classn == "Admin":
+    #     Adminweapons()
+        
     prevdamage = PlayerIG.attack
     option = input("-> ").lower()
     if option.lower() == "back":
@@ -604,5 +622,5 @@ def debugboot():
     setup1()
 
 
-debugboot()
-#boot()
+#debugboot()
+boot()

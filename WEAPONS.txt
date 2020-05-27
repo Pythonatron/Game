@@ -1,98 +1,70 @@
-#Condition = condition of the weapon, can be upgraded (xp/gold/both, unknown)
-#Special = special 'power' weapon can use that applies during combat
-#Durability = durability of the weapon (essentially number of uses till the weapon breaks) maybe increased with condition
-
 Name, Price, Base Damage, Usage Class?, Condition, Special, Durability
-
-Warrior Weapons:
-    Fists,0,5,warrior,poor,none,infinite
-    Brass Knuckles,680,15,warrior,poor,none,100
-    Studded Gauntlets,950,30,warrior,poor,none,200
-    Spear,200,7,warrior,poor,none,50
-    Lance,500,10,warrior,poor,none,100
-    Halberd,800,25,warrior,poor,none,200
-    Cutlass,300,9,warrior,poor,none,50
-    LongSword,600,12,warrior,poor,none,100
-    GreatSword,900,28,warrior,poor,none,200
-    War axe,632,12,warrior,poor,none,50
-    Battle Axe,650,15,warrior,poor,none,100
-    Horseman's Axe,1000,30,warrior,poor,none,200
-    Morning Star,200,8,warrior,poor,none,50
-    Mace,400,12,warrior,poor,none,100
-    Flail,800,25,warrior,poor,none,200
-
-Magic User Weapons: (wands, staves, 'sticks', maybe daggers?, scepter)
-    Stick,0,5,warrior,poor,none,infinite
-    Pretty Stick,680,15,warrior,poor,none,100
-    Wand,950,30,warrior,poor,none,200
-    
-    Branch,200,7,warrior,poor,none,50
-    Walking Stick,500,10,warrior,poor,none,100
-    Staff,800,25,warrior,poor,none,200
-    
-    Hardwood Wand,300,9,warrior,poor,none,50
-    Glittered Wand,600,12,warrior,poor,none,100
-    Scepter,900,28,warrior,poor,none,200
-    
-    Dagger,632,12,warrior,poor,none,50
-    Daqtagh knife,650,15,warrior,poor,none,100
-    Yew & Phoenix Feather Wand,1000,30,warrior,poor,none,200
-    
-    ,200,8,warrior,poor,none,50
-    ,400,12,warrior,poor,none,100
-    ,800,25,warrior,poor,none,200
-
-Rogue Weapons:
-    Rusty Dagger,0,5,warrior,poor,none,infinite
-    Dagger,680,15,warrior,poor,none,100
-    Strong Dagger,950,30,warrior,poor,none,200
-    
-    ,200,7,warrior,poor,none,50
-    ,500,10,warrior,poor,none,100
-    ,800,25,warrior,poor,none,200
-    
-    ,300,9,warrior,poor,none,50
-    ,600,12,warrior,poor,none,100
-    ,900,28,warrior,poor,none,200
-    
-    ,632,12,warrior,poor,none,50
-    ,650,15,warrior,poor,none,100
-    ,1000,30,warrior,poor,none,200
-    
-    ,200,8,warrior,poor,none,50
-    ,400,12,warrior,poor,none,100
-    ,800,25,warrior,poor,none,200
-
-Ranger Weapons:
-    Battle-worn Bow,0,5,warrior,poor,none,infinite
-    Short Bow,680,15,warrior,poor,none,100
-    Bow,950,30,warrior,poor,none,200
-    
-    Crossbow,200,7,warrior,poor,none,50
-    Long Bow,500,10,warrior,poor,none,100
-    ,800,25,warrior,poor,none,200
-    
-    ,300,9,warrior,poor,none,50
-    ,600,12,warrior,poor,none,100
-    ,900,28,warrior,poor,none,200
-    
-    ,632,12,warrior,poor,none,50
-    ,650,15,warrior,poor,none,100
-    ,1000,30,warrior,poor,none,200
-    
-    ,200,8,warrior,poor,none,50
-    ,400,12,warrior,poor,none,100
-    ,800,25,warrior,poor,none,200
-
-Any User:
-    Slice Of Pizza
-    Red Sai
-    Blue Sword
-    Pepper Spray 
-    Purple Bo Staff
-    Orange Nunchucks
-    Zeus Lightning
-    Biggest Blackest Dildo = internalbleeding
-
-Admin Only:
-    Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
+Fists,0,5,warrior,poor,none,infinite
+Brass Knuckles,680,15,warrior,poor,none,100
+Studded Gauntlets,950,30,warrior,poor,none,200
+Spear,200,7,warrior,poor,none,50
+Lance,500,10,warrior,poor,none,100
+Halberd,800,25,warrior,poor,none,200
+Cutlass,300,9,warrior,poor,none,50
+LongSword,600,12,warrior,poor,none,100
+GreatSword,900,28,warrior,poor,none,200
+War axe,632,12,warrior,poor,none,50
+Battle Axe,650,15,warrior,poor,none,100
+Horseman's Axe,1000,30,warrior,poor,none,200
+Morning Star,200,8,warrior,poor,none,50
+Mace,400,12,warrior,poor,none,100
+Flail,800,25,warrior,poor,none,200
+Stick,0,5,warrior,poor,none,infinite
+Pretty Stick,680,15,warrior,poor,none,100
+Wand,950,30,warrior,poor,none,200
+Branch,200,7,warrior,poor,none,50
+Walking Stick,500,10,warrior,poor,none,100
+Staff,800,25,warrior,poor,none,200
+Hardwood Wand,300,9,warrior,poor,none,50
+Glittered Wand,600,12,warrior,poor,none,100
+Scepter,900,28,warrior,poor,none,200
+Dagger,632,12,warrior,poor,none,50
+Daqtagh knife,650,15,warrior,poor,none,100
+Yew & Phoenix Feather Wand,1000,30,warrior,poor,none,200
+,200,8,warrior,poor,none,50
+,400,12,warrior,poor,none,100
+,800,25,warrior,poor,none,200
+Rusty Dagger,0,5,warrior,poor,none,infinite
+Dagger,680,15,warrior,poor,none,100
+Strong Dagger,950,30,warrior,poor,none,200
+,200,7,warrior,poor,none,50
+,500,10,warrior,poor,none,100
+,800,25,warrior,poor,none,200
+,300,9,warrior,poor,none,50
+,600,12,warrior,poor,none,100
+,900,28,warrior,poor,none,200
+,632,12,warrior,poor,none,50
+,650,15,warrior,poor,none,100
+,1000,30,warrior,poor,none,200
+,200,8,warrior,poor,none,50
+,400,12,warrior,poor,none,100
+,800,25,warrior,poor,none,200
+Battle-worn Bow,0,5,warrior,poor,none,infinite
+Short Bow,680,15,warrior,poor,none,100
+Bow,950,30,warrior,poor,none,200
+Crossbow,200,7,warrior,poor,none,50
+Long Bow,500,10,warrior,poor,none,100
+,800,25,warrior,poor,none,200
+,300,9,warrior,poor,none,50
+,600,12,warrior,poor,none,100
+,900,28,warrior,poor,none,200
+,632,12,warrior,poor,none,50
+,650,15,warrior,poor,none,100
+,1000,30,warrior,poor,none,200
+,200,8,warrior,poor,none,50
+,400,12,warrior,poor,none,100
+,800,25,warrior,poor,none,200
+Slice Of Pizza
+Red Sai
+Blue Sword
+Pepper Spray 
+Purple Bo Staff
+Orange Nunchucks
+Zeus Lightning
+Biggest Blackest Dildo = internalbleeding
+Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
