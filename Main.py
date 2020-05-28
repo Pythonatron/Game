@@ -4,29 +4,11 @@ import random
 import sys
 from random import choices
 from time import sleep
-
 from colorama import init
 
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
-
-#Condition = condition of the weapon, can be upgraded (xp/gold/both, unknown)
-#Special = special 'power' weapon can use that applies during combat
-#Durability = durability of the weapon (essentially number of uses till the weapon breaks) maybe increased with condition
-#armor system
-#durability system
-#special powers system
-#condition system
-#is weaponclass implemented already?
-#magic defense and attack system
-#miss system
-#weapon listing at shop
-#What's the point of xp?
-#xp based off of attack and armor? # armor + health + attack / 4 * 2 = xp? idk
-#total defense (which isn't implemented) should be possibly a defense variable +/* armor +/* health
-#should xp incrase the player, weapon or armor or all three?
-#im sure there's a better way to do this as well.. maybe Class Monster ->Skeleton, etc?
 
 def capital(text):
     capitalized_message = " ".join([word.capitalize() for word in text.split(" ")])
@@ -42,9 +24,6 @@ class Weapon:
         self.special = ""
         self.durability = 0
 
-# 0      1         2             3          4          5        6
-#Name, Price, Base Damage, Usage Class?, Condition, Special, Durability
-
     def weapon_details(self, weaponID):
         with open("WEAPONS.txt", "r", encoding="utf8") as f:
             for line in f:
@@ -58,8 +37,6 @@ class Weapon:
                     self.special = _parts[5]
                     self.durability = _parts[6]
                     break
-
-
 
 class Player:
     def __init__(self, name, maxhealth, base_attack, pots, magicdefense, magicattack, classn, armor, weapon, currweapon, description, gold=0 ):
@@ -496,15 +473,11 @@ def shop():
         if stringcheck('WEAPONS.txt',capital(option)):
             weapon = Weapon()
             weapon.weapon_details(capital(option))
-            highprice, lowprice = int(weapon.highprice), int(weapon.lowprice)
-            price = random.randint(lowprice, highprice)
-            if PlayerIG.gold >= price:
-                PlayerIG.gold -= price
+            if PlayerIG.gold >= weapon.price:
+                PlayerIG.gold -= weapon.price
                 PlayerIG.weapon.append(capital(option))
-                ld, hd = int(weapon.lowdamage), int(weapon.highdamage)
-                damage = random.randint(ld, hd)
                 print("Acquired %s!" % option)
-                print("Damage Difference roughly of: ", damage - prevdamage)
+                print("Damage Difference roughly of: ", weapon.damage - prevdamage)
                 print("You now have %i Gold!" % PlayerIG.gold)
                 input("Press Enter to Continue")
                 shop()
@@ -588,7 +561,7 @@ def mbTitle():
         "#                                   --Insert witty  comments here-                                #"
     )
     print(
-        "#                               There's a total of 9 references in here                           #"
+        "#                                                                                                 #"
     )
     print(
         "#                                      Can you find them all?                                     #"
