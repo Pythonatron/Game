@@ -14,51 +14,52 @@ Horseman's Axe,1000,30,warrior,poor,none,200
 Morning Star,200,8,warrior,poor,none,50
 Mace,400,12,warrior,poor,none,100
 Flail,800,25,warrior,poor,none,200
-Stick,0,5,warrior,poor,none,infinite
-Pretty Stick,680,15,warrior,poor,none,100
-Wand,950,30,warrior,poor,none,200
-Branch,200,7,warrior,poor,none,50
-Walking Stick,500,10,warrior,poor,none,100
-Staff,800,25,warrior,poor,none,200
-Hardwood Wand,300,9,warrior,poor,none,50
-Glittered Wand,600,12,warrior,poor,none,100
-Scepter,900,28,warrior,poor,none,200
-Dagger,632,12,warrior,poor,none,50
-Daqtagh knife,650,15,warrior,poor,none,100
-Yew & Phoenix Feather Wand,1000,30,warrior,poor,none,200
-,200,8,warrior,poor,none,50
-,400,12,warrior,poor,none,100
-,800,25,warrior,poor,none,200
-Rusty Dagger,0,5,warrior,poor,none,infinite
-Dagger,680,15,warrior,poor,none,100
-Strong Dagger,950,30,warrior,poor,none,200
-,200,7,warrior,poor,none,50
-,500,10,warrior,poor,none,100
-,800,25,warrior,poor,none,200
-,300,9,warrior,poor,none,50
-,600,12,warrior,poor,none,100
-,900,28,warrior,poor,none,200
-,632,12,warrior,poor,none,50
-,650,15,warrior,poor,none,100
-,1000,30,warrior,poor,none,200
-,200,8,warrior,poor,none,50
-,400,12,warrior,poor,none,100
-,800,25,warrior,poor,none,200
-Battle-worn Bow,0,5,warrior,poor,none,infinite
-Short Bow,680,15,warrior,poor,none,100
-Bow,950,30,warrior,poor,none,200
-Crossbow,200,7,warrior,poor,none,50
-Long Bow,500,10,warrior,poor,none,100
-,800,25,warrior,poor,none,200
-,300,9,warrior,poor,none,50
-,600,12,warrior,poor,none,100
-,900,28,warrior,poor,none,200
-,632,12,warrior,poor,none,50
-,650,15,warrior,poor,none,100
-,1000,30,warrior,poor,none,200
-,200,8,warrior,poor,none,50
-,400,12,warrior,poor,none,100
-,800,25,warrior,poor,none,200
+
+Stick,0,5,mage,poor,none,infinite
+Pretty Stick,680,15,mage,poor,none,100
+Wand,950,30,mage,poor,none,200
+Branch,200,7,mage,poor,none,50
+Walking Stick,500,10,mage,poor,none,100
+Staff,800,25,mage,poor,none,200
+Hardwood Wand,300,9,mage,poor,none,50
+Glittered Wand,600,12,mage,poor,none,100
+Scepter,900,28,mage,poor,none,200
+Dagger,632,12,mage,poor,none,50
+Daqtagh knife,650,15,mage,poor,none,100
+Yew & Phoenix Feather Wand,1000,30,mage,poor,none,200
+,200,8,mage,poor,none,50
+,400,12,mage,poor,none,100
+,800,25,mage,poor,none,200
+Rusty Dagger,0,5,mage,poor,none,infinite
+Dagger,680,15,mage,poor,none,100
+Strong Dagger,950,30,mage,poor,none,200
+,200,7,mage,poor,none,50
+,500,10,mage,poor,none,100
+,800,25,mage,poor,none,200
+,300,9,mage,poor,none,50
+,600,12,mage,poor,none,100
+,900,28,mage,poor,none,200
+,632,12,mage,poor,none,50
+,650,15,mage,poor,none,100
+,1000,30,mage,poor,none,200
+,200,8,mage,poor,none,50
+,400,12,mage,poor,none,100
+,800,25,mage,poor,none,200
+Battle-worn Bow,0,5,mage,poor,none,infinite
+Short Bow,680,15,mage,poor,none,100
+Bow,950,30,mage,poor,none,200
+Crossbow,200,7,mage,poor,none,50
+Long Bow,500,10,mage,poor,none,100
+,800,25,mage,poor,none,200
+,300,9,mage,poor,none,50
+,600,12,mage,poor,none,100
+,900,28,mage,poor,none,200
+,632,12,mage,poor,none,50
+,650,15,mage,poor,none,100
+,1000,30,mage,poor,none,200
+,200,8,mage,poor,none,50
+,400,12,mage,poor,none,100
+,800,25,mage,poor,none,200
 Slice Of Pizza
 Red Sai
 Blue Sword

@@ -10,6 +10,9 @@ from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
 
+init()
+os.system("mode con: cols=137 lines=30")
+    
 def capital(text):
     capitalized_message = " ".join([word.capitalize() for word in text.split(" ")])
     return capitalized_message
@@ -106,11 +109,20 @@ def setup1():
     option = input("Name-> ")
     PlayerIG = Player(option, "", "", "", "", "", "", "", "", "", "", "")
     setup2()
-
+    
+def classdesc():
+    print("--------------------------------------------------------------------------------------------------------------------------------------")
+    print("|Rogue   |Health: 70  | Attack: 7  | Potions: 1 | Armor: 0 | Weapon: Rusty Dagger    | Gold: 40 | Description: I am very, very sneaky.|")
+    print("|Mage    |Health: 70  | Attack: 4  | Potions: 2 | Armor: 0 | Weapon: Stick           | Gold: 15 | Description: You're a Wizard Harry  |")
+    print("|Warrior |Health: 120 | Attack: 10 | Potions: 0 | Armor: 0 | Weapon: Fists           | Gold: 10 | Description: Brutal                 |")
+    print("|Ranger  |Health: 80  | Attack: 8  | Potions: 1 | Armor: 0 | Weapon: Battle-worn Bow | Gold: 10 | Description: Pew Pew Arrow..beamz?. |")
+    print("|Priest  |Health: 50  | Attack: 5  | Potions: 5 | Armor: 0 | Weapon: Stick           | Gold: 5  | Description: Praise be to Yevon.    |")
+    print("--------------------------------------------------------------------------------------------------------------------------------------")
 
 def setup2():
     global PlayerIG
     print("Choose from Ranger, Mage, Warrior, Priest, Rogue")
+    classdesc()    
     choice = input("Class-> ").lower()
     if choice == "warrior":
         PlayerIG = Player(PlayerIG.name,120,10,0,2,0,"Warrior",0,['Fists'],['Fists'],"Brutal.",10)
@@ -128,8 +140,14 @@ def setup2():
         PlayerIG = Player(PlayerIG.name,70,7,1,1,0,"Rogue",0,['Rusty Dagger'],['Rusty Dagger'],"A cloud of smoke and he appears. The master of suprise!",40) 
         start1()
     elif choice == "god":
-        PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['Admin'],['Admin'],"",1000) 
-        start1()
+        if os.path.exists("adminaccess") == True:
+            PlayerIG = Player(PlayerIG.name,100,100,100,100,100,"Admin",100,['Admin'],['Admin'],"",1000) 
+            start1()
+        else:
+            print("Nice try")
+            print("Try Again")
+            input("Press Enter to Continue")
+            setup2()
     else:
         os.system("cls||clear")
         print("Incorrect class, try again")
@@ -430,39 +448,46 @@ def shop():
     print("|      Aviailable Gold: ( %s )      |" % PlayerIG.gold)
     print("-------------------------------------")
     
-    #
-    #  List[Weapon - Price - Damage] Only show class specific weapons
-    #   I don't know how to do this
-    #weapon.weapon_details(x).capitalize())
-    
-    #     for weapon in PlayerIG.weapon:
-    #         print(weapon)
-    #     option = input("-> ").lower()
-    #     if capital(option) in PlayerIG.weapon:
-    #         weapon = Weapon()
-    #         weapon.weapon_details(capital(option))
-    #         variable = capital(option)
-            
-            
-    # weapon = Weapon()
-    # print(weapon,"here")
-    # if PlayerIG.classn == "Warrior":
-    #     print("class",PlayerIG.classn)
-    #     for weapons in weapon.weapon_details:
-    #         #weapon.weapon_details(x).capitalize()
-    #         #if weapon.weaponclass == warrior:
-    #             print(x)
-    # if PlayerIG.classn == "Mage":
-    #     Mageweapons()
-    # if PlayerIG.classn == "Ranger":
-    #     Rangerweapons()
-    # if PlayerIG.classn == "Priest":
-    #     Priestweapons()
-    # if PlayerIG.classn == "Rogue":
-    #     Rogueweapons()
-    # if PlayerIG.classn == "Admin":
-    #     Adminweapons()
-        
+   #I am sure there's a more elegant way to do this, but I don't know it.
+    if PlayerIG.classn == "Warrior":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'warrior' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    elif PlayerIG.classn == "Mage":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'mage' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    elif PlayerIG.classn == "Ranger":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'ranger' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    elif PlayerIG.classn == "Priest":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'priest' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    elif PlayerIG.classn == "Rogue":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'rogue' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    elif PlayerIG.classn == "Admin":
+        with open('WEAPONS.txt','r') as fp:
+            lines = fp.read().splitlines()
+            for l in lines:
+                if 'admin' in l:
+                    print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
+    else:  
+        print("Unknown Player Class?")
+
     prevdamage = PlayerIG.attack
     option = input("-> ").lower()
     if option.lower() == "back":
@@ -578,8 +603,6 @@ def mbTitle():
 
 
 def boot():
-    init()
-    os.system("mode con: cols=101 lines=30")
     mTitle()
     mbTitle()
     print_slow(text)
@@ -595,5 +618,5 @@ def debugboot():
     setup1()
 
 
-#debugboot()
-boot()
+debugboot()
+#boot()
