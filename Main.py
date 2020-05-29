@@ -28,7 +28,7 @@ class Weapon:
         self.durability = 0
 
     def weapon_details(self, weaponID):
-        with open("WEAPONS.txt", "r", encoding="utf8") as f:
+        with open("Weapons.txt", "r", encoding="utf8") as f:
             for line in f:
                 _parts = line.split(",")
                 if str(weaponID) == _parts[0]:
@@ -251,7 +251,7 @@ def equip():
     print("-------------------------------------")
     print("|  Type the weapon name to equip it |")
     print("|    *==Type back to leave==*       |")
-    print("| These are your available weapons  |")
+    print("| These are your available Weapons  |")
     print("-------------------------------------")
     for weapon in PlayerIG.weapon:
         print(weapon)
@@ -443,47 +443,47 @@ def shop():
     print("|        Shhhawwwwp??!?!?           |")
     print("|  Type the weapon name to buy it   |")
     print("|        Type back to leave         |")
-    print("| These are your available weapons  |")
+    print("| These are your available Weapons  |")
     print("|      Yeah I know it's ugly        |")
     print("|      Aviailable Gold: ( %s )      |" % PlayerIG.gold)
     print("-------------------------------------")
     
    #I am sure there's a more elegant way to do this, but I don't know it.
     if PlayerIG.classn == "Warrior":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'warrior' in l:
+                if 'warrior' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     elif PlayerIG.classn == "Mage":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'mage' in l:
+                if 'mage' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     elif PlayerIG.classn == "Ranger":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'ranger' in l:
+                if 'ranger' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     elif PlayerIG.classn == "Priest":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'priest' in l:
+                if 'priest' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     elif PlayerIG.classn == "Rogue":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'rogue' in l:
+                if 'rogue' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     elif PlayerIG.classn == "Admin":
-        with open('WEAPONS.txt','r') as fp:
+        with open('Weapons.txt','r') as fp:
             lines = fp.read().splitlines()
             for l in lines:
-                if 'admin' in l:
+                if 'admin' in l or 'any' in l:
                     print('{name} is {gold} gold, {damage} damage'.format(name = l.split(',',maxsplit=1)[0],gold = l.split(',')[1],damage = l.split(',')[2]))
     else:  
         print("Unknown Player Class?")
@@ -495,14 +495,15 @@ def shop():
     elif option.lower() == "exit":
         sys.exit()
     else:
-        if stringcheck('WEAPONS.txt',capital(option)):
+        if stringcheck('Weapons.txt',capital(option)):
             weapon = Weapon()
             weapon.weapon_details(capital(option))
-            if PlayerIG.gold >= weapon.price:
-                PlayerIG.gold -= weapon.price
+            print(weapon.price)
+            if PlayerIG.gold >= int(weapon.price):
+                PlayerIG.gold -= int(weapon.price)
                 PlayerIG.weapon.append(capital(option))
                 print("Acquired %s!" % option)
-                print("Damage Difference roughly of: ", weapon.damage - prevdamage)
+                print("Damage Difference roughly of: ", int(weapon.damage) - prevdamage)
                 print("You now have %i Gold!" % PlayerIG.gold)
                 input("Press Enter to Continue")
                 shop()
@@ -618,5 +619,5 @@ def debugboot():
     setup1()
 
 
-debugboot()
-#boot()
+#debugboot()
+boot()

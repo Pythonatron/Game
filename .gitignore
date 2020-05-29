@@ -1,11 +1,2 @@
-
-.vscode/settings.json
-*.pyc
-notes.py
-printtesting.py
 Secrets.py
-Testingarea.py
-Main.py.bak
-__pycache__/Villains.cpython-38.pyc
-testingarea2.py
-adminaccess
+Notes

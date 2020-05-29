@@ -14,7 +14,6 @@ Horseman's Axe,1000,30,warrior,poor,none,200
 Morning Star,200,8,warrior,poor,none,50
 Mace,400,12,warrior,poor,none,100
 Flail,800,25,warrior,poor,none,200
-
 Stick,0,5,mage,poor,none,infinite
 Pretty Stick,680,15,mage,poor,none,100
 Wand,950,30,mage,poor,none,200
@@ -27,45 +26,45 @@ Scepter,900,28,mage,poor,none,200
 Dagger,632,12,mage,poor,none,50
 Daqtagh knife,650,15,mage,poor,none,100
 Yew & Phoenix Feather Wand,1000,30,mage,poor,none,200
-,200,8,mage,poor,none,50
-,400,12,mage,poor,none,100
-,800,25,mage,poor,none,200
-Rusty Dagger,0,5,mage,poor,none,infinite
-Dagger,680,15,mage,poor,none,100
-Strong Dagger,950,30,mage,poor,none,200
-,200,7,mage,poor,none,50
-,500,10,mage,poor,none,100
-,800,25,mage,poor,none,200
-,300,9,mage,poor,none,50
-,600,12,mage,poor,none,100
-,900,28,mage,poor,none,200
-,632,12,mage,poor,none,50
-,650,15,mage,poor,none,100
-,1000,30,mage,poor,none,200
-,200,8,mage,poor,none,50
-,400,12,mage,poor,none,100
-,800,25,mage,poor,none,200
-Battle-worn Bow,0,5,mage,poor,none,infinite
-Short Bow,680,15,mage,poor,none,100
-Bow,950,30,mage,poor,none,200
-Crossbow,200,7,mage,poor,none,50
-Long Bow,500,10,mage,poor,none,100
-,800,25,mage,poor,none,200
-,300,9,mage,poor,none,50
-,600,12,mage,poor,none,100
-,900,28,mage,poor,none,200
-,632,12,mage,poor,none,50
-,650,15,mage,poor,none,100
-,1000,30,mage,poor,none,200
-,200,8,mage,poor,none,50
-,400,12,mage,poor,none,100
-,800,25,mage,poor,none,200
-Slice Of Pizza
-Red Sai
-Blue Sword
-Pepper Spray 
-Purple Bo Staff
-Orange Nunchucks
-Zeus Lightning
-Biggest Blackest Dildo = internalbleeding
+Twig,200,8,mage,poor,none,50
+IamRunningOutOfIdeas,400,12,mage,poor,none,100
+Fireplace Poker,800,25,mage,poor,none,200
+Rusty Dagger,0,5,rogue,poor,none,infinite
+Dagger,680,15,rogue,poor,none,100
+Strong Dagger,950,30,rogue,poor,none,200
+Anelace Dagger,200,7,rogue,poor,none,50
+Baselard Dagger,500,10,rogue,poor,none,100
+Bollock Dagger,800,25,rogue,poor,none,200
+Rondel Dagger,300,9,rogue,poor,none,50
+Cinquedea,600,12,rogue,poor,none,100
+Misericorde,900,28,rogue,poor,none,200
+Stiletto,632,12,rogue,poor,none,50
+Hunting Dagger,650,15,rogue,poor,none,100
+Dirk,1000,30,rogue,poor,none,200
+Corvo,200,8,rogue,poor,none,50
+Parrying Dagger,400,12,rogue,poor,none,100
+Tanto,800,25,rogue,poor,none,200
+Battle-worn Bow,0,5,ranger,poor,none,infinite
+Short Bow,680,15,ranger,poor,none,100
+Bow,950,30,ranger,poor,none,200
+Crossbow,200,7,ranger,poor,none,50
+Long Bow,500,10,ranger,poor,none,100
+Hunting Bow,800,25,ranger,poor,none,200
+Recurve Bow,300,9,ranger,poor,none,50
+Repeating Crossbow,600,12,ranger,poor,none,100
+Reflex Bow,900,28,ranger,poor,none,200
+Self Bow,632,12,ranger,poor,none,50
+Composite Bow,650,15,ranger,poor,none,100
+Compound Bow,1000,30,ranger,poor,none,200
+Takedown Bow,200,8,ranger,poor,none,50
+Flat Bow,400,12,ranger,poor,none,100
+Kyudo Bow,800,25,ranger,poor,none,200
+Slice Of Pizza,2,1,any,poor,fullness,100
+Red Sai,800,25,any,poor,none,100
+Blue Sword,800,25,any,poor,none,100
+Pepper Spray,100,25,any,poor,none,50
+Purple Bo Staff,800,25,any,poor,none,100
+Orange Nunchucks,800,25,any,poor,none,100
+Zeus Lightning,100000000,100000,any,poor,none,10
+Biggest Blackest Dildo,420,25,any,poor,internalbleeding,69 
 Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
