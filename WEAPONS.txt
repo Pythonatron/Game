@@ -67,4 +67,4 @@ Purple Bo Staff,800,25,any,poor,none,100
 Orange Nunchucks,800,25,any,poor,none,100
 Zeus Lightning,100000000,100000,any,poor,none,10
 Biggest Blackest Dildo,420,25,any,poor,internalbleeding,69 
-Admin,10000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
+Admin,1000000000,10000000000,50000000000000,100000000000000,admin,junk,none,infinite
