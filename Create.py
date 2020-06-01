@@ -1,13 +1,37 @@
 import os
+import base64
+import sys 
 
 def capital(text):
     capitalized_message = " ".join([word.capitalize() for word in text.split(" ")])
     return capitalized_message
 
 def create():
+    print("Input password?")
+    passwd = input("Password?")
     #add password for my amusement?
     #add class
     #add enemy
+    if os.path.exists("adminaccess") == True:
+        with open("adminaccess") as a:
+            lines = a.readlines()
+            if lines[2] == base64.b64encode(passwd).encode("utf-8"):
+                print("Access granted? This probably isn't very secure...")
+            else:
+                print("Access denied:")
+                print("Cleaning up")
+                os.remove("Create.py")
+                os.remove("adminaccess")
+                sys.exit()
+        
+        if 
+  
+print(base64.b64encode("password".encode("utf-8")))
+cGFzc3dvcmQ=
+print(base64.b64decode("cGFzc3dvcmQ=").decode("utf-8"))
+password
+
+
     print("*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*")
     print("|        Welcome Creator          |")
     print("*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*")
@@ -17,7 +41,7 @@ def create():
     print("*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*")
     print("for now i'd suggest getting it right")
     print("the first time otherwise you will get")
-    print("a 'none' value if you mess up.. yay?)
+    print("a 'none' value if you mess up.. yay?")
     choice = input("->").lower()
     if choice == "add weapon":
         addweapon = []
@@ -105,6 +129,4 @@ def weaponprice():
         weaponprice()
     else:
         return price
-
-os.system("cls||clear")
-create()
+    

@@ -5,7 +5,7 @@ import sys
 from random import choices
 from time import sleep
 from colorama import init
-
+from Create import create
 from Villains import (
     DeathIG, DiabetesIG, GoblinIG, HoytIG, RickIG, ScroogeIG, SkeletonIG,
     VampireIG, WalyIG, WerepIG, ZombieIG)
@@ -99,6 +99,9 @@ def main():
             main()
     elif option.lower() == "exit":
         sys.exit()
+    elif option.lower() == "create":
+        os.system("cls||clear")
+        create()
     else:
         main()
 
