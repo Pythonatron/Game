@@ -24,12 +24,11 @@ def create():
                 os.remove("adminaccess")
                 sys.exit()
         
-        if 
   
-print(base64.b64encode("password".encode("utf-8")))
-cGFzc3dvcmQ=
-print(base64.b64decode("cGFzc3dvcmQ=").decode("utf-8"))
-password
+# print(base64.b64encode("password".encode("utf-8")))
+# cGFzc3dvcmQ=
+# print(base64.b64decode("cGFzc3dvcmQ=").decode("utf-8"))
+# password
 
 
     print("*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*_*")
